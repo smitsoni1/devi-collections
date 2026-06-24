@@ -40,7 +40,6 @@ export default function CategoryListScreen() {
         name: category.name,
         inNavbar: !category.inNavbar
       }).unwrap();
-      toast.success(`${category.name} ${!category.inNavbar ? 'added to' : 'removed from'} navbar`);
     } catch (err) {
       toast.error(err?.data?.message || 'Failed to update status');
     }
