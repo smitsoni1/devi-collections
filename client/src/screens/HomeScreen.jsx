@@ -45,6 +45,12 @@ export default function HomeScreen() {
   const { data, isLoading, isError, error } = useGetProductsQuery(queryParams);
 
   useEffect(() => {
+    setCategory(searchParams.get('category') || '');
+    setSearch(searchParams.get('search') || '');
+    setSort(searchParams.get('sort') || 'newest');
+  }, [searchParams]);
+
+  useEffect(() => {
     const params = {};
     if (category) params.category = category;
     if (sort !== 'newest') params.sort = sort;
