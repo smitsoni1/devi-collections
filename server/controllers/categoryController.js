@@ -13,7 +13,7 @@ export const getCategories = asyncHandler(async (req, res) => {
 // @route   POST /api/categories
 // @access  Private/Admin
 export const createCategory = asyncHandler(async (req, res) => {
-  const { name } = req.body;
+  const { name, inNavbar } = req.body;
 
   const categoryExists = await Category.findOne({ name });
   if (categoryExists) {
@@ -21,7 +21,7 @@ export const createCategory = asyncHandler(async (req, res) => {
     throw new Error('Category already exists');
   }
 
-  const category = await Category.create({ name });
+  const category = await Category.create({ name, inNavbar: inNavbar || false });
   res.status(201).json({ success: true, category });
 });
 
@@ -33,6 +33,9 @@ export const updateCategory = asyncHandler(async (req, res) => {
 
   if (category) {
     category.name = req.body.name || category.name;
+    if (req.body.inNavbar !== undefined) {
+      category.inNavbar = req.body.inNavbar;
+    }
     const updatedCategory = await category.save();
     res.json({ success: true, category: updatedCategory });
   } else {

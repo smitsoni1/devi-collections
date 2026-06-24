@@ -8,6 +8,10 @@ const categorySchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    inNavbar: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
