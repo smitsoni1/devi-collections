@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useGetUserProfileQuery, useUpdateUserProfileMutation } from '../features/users/usersApiSlice';
@@ -11,6 +12,7 @@ export default function ProfileScreen() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -37,10 +39,11 @@ export default function ProfileScreen() {
         password: password || undefined,
       }).unwrap();
 
-      dispatch(setCredentials({ ...res }));
+      dispatch(setCredentials(res.user));
       toast.success('Profile updated successfully');
       setPassword('');
       setConfirmPassword('');
+      navigate('/');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
