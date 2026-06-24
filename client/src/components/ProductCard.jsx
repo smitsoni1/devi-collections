@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiShoppingBag, FiStar, FiHeart } from 'react-icons/fi';
 import { addToCart } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
   const [wished, setWished] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -30,6 +32,11 @@ export default function ProductCard({ product }) {
 
   const handleQuickAdd = (e) => {
     e.preventDefault();
+    if (!userInfo) {
+      toast.info('Please log in to add items to your cart');
+      navigate(`/login?redirect=/product/${_id}`);
+      return;
+    }
     if (!inStock) return;
     const defaultSize = sizes?.length === 1 ? sizes[0] : sizes?.[0] || 'Free Size';
     dispatch(addToCart({

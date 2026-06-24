@@ -47,6 +47,11 @@ export default function ProductScreen() {
   const mainImage = images?.[selectedImage]?.secure_url || 'https://placehold.co/600x750/ffffff/c44ef0?text=No+Image';
 
   const handleAddToCart = () => {
+    if (!userInfo) {
+      toast.info('Please log in to add items to your cart');
+      navigate(`/login?redirect=/product/${product._id}`);
+      return;
+    }
     if (!selectedSize && sizes?.length > 0 && !sizes.includes('Free Size')) {
       toast.error('Please select a size');
       return;

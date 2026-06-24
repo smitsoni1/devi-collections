@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useLoginMutation } from '../features/auth/authSlice';
@@ -10,6 +10,9 @@ import { toast } from 'react-toastify';
 export default function LoginScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get('redirect') || '/';
+
   const [login, { isLoading }] = useLoginMutation();
 
   const [email, setEmail] = useState('');
@@ -27,7 +30,7 @@ export default function LoginScreen() {
       if (result.user.isAdmin) {
         navigate('/admin/dashboard');
       } else {
-        navigate('/');
+        navigate(redirect);
       }
       toast.success(`Welcome back, ${result.user.name.split(' ')[0]}! 🎉`);
     } catch (err) {
