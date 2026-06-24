@@ -22,7 +22,7 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className={`fixed lg:relative inset-y-0 left-0 z-40 w-64 transition-transform duration-300 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      } bg-surface-card border-r border-surface-border flex flex-col pt-6 pb-4`}>
+      } bg-gray-900 border-r border-gray-800 flex flex-col pt-6 pb-4`}>
 
         <div className="px-4 mb-6">
           <div className="flex items-center justify-between">
@@ -47,7 +47,7 @@ export default function AdminLayout() {
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-1 text-sm font-medium transition-all duration-200 ${
                   active
                     ? 'bg-brand-gradient text-white shadow-brand'
-                    : 'text-gray-400 hover:bg-surface-elevated hover:text-white'
+                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
@@ -58,8 +58,8 @@ export default function AdminLayout() {
           })}
         </nav>
 
-        <div className="px-4 pt-4 border-t border-surface-border">
-          <Link to="/" className="btn-ghost text-xs w-full justify-start gap-2">
+        <div className="px-4 pt-4 border-t border-gray-800">
+          <Link to="/" className="flex items-center text-gray-400 hover:text-white hover:bg-gray-800 px-4 py-2 rounded-lg transition-colors text-xs w-full justify-start gap-2">
             ← Back to Store
           </Link>
         </div>
@@ -73,11 +73,11 @@ export default function AdminLayout() {
       {/* Main Content */}
       <main className="flex-1 overflow-auto">
         {/* Mobile Header */}
-        <div className="lg:hidden flex items-center gap-3 px-4 py-3 border-b border-surface-border">
+        <div className="lg:hidden flex items-center gap-3 px-4 py-3 border-b border-gray-200">
           <button onClick={() => setSidebarOpen(true)} className="btn-ghost p-2">
             <FiMenu className="w-5 h-5" />
           </button>
-          <p className="font-semibold text-white text-sm">Admin Panel</p>
+          <p className="font-semibold text-gray-900 text-sm">Admin Panel</p>
         </div>
         <div className="p-6">
           <Outlet />

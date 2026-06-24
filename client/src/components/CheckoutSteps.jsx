@@ -19,14 +19,14 @@ export default function CheckoutSteps({ currentStep }) {
                     ? 'bg-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.4)]'
                     : isActive
                     ? 'bg-brand-gradient text-white shadow-brand'
-                    : 'bg-surface-elevated border border-surface-border text-gray-500'
+                    : 'bg-white border border-gray-300 text-gray-400'
                 }`}
               >
                 {isDone ? <FiCheck className="w-4 h-4" /> : stepNum}
               </div>
               <span
                 className={`text-xs mt-1.5 font-medium ${
-                  isActive ? 'text-brand-300' : isDone ? 'text-emerald-400' : 'text-gray-600'
+                  isActive ? 'text-brand-700' : isDone ? 'text-emerald-600' : 'text-gray-500'
                 }`}
               >
                 {step}
@@ -35,7 +35,7 @@ export default function CheckoutSteps({ currentStep }) {
             {index < steps.length - 1 && (
               <div
                 className={`h-0.5 w-16 sm:w-24 mx-2 rounded transition-all duration-500 ${
-                  isDone ? 'bg-emerald-500' : 'bg-surface-border'
+                  isDone ? 'bg-emerald-500' : 'bg-gray-200'
                 }`}
               />
             )}
