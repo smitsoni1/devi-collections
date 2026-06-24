@@ -4,7 +4,7 @@ import { FiSearch, FiFilter, FiX, FiChevronDown } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
 import { SkeletonGrid } from '../components/Loader';
 import Message from '../components/Message';
-import ProductSlider from '../components/ProductSlider';
+import CategorySlider from '../components/CategorySlider';
 import { useGetProductsQuery } from '../features/products/productsApiSlice';
 import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
 import { useGetSizesQuery } from '../features/sizes/sizesApiSlice';
@@ -30,7 +30,7 @@ export default function HomeScreen() {
   const [page, setPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
 
-  const isHomeView = !category && !search;
+  const isHomeView = !category && !search && !minPrice && !maxPrice && !size && !fabric && !rating;
 
   const queryParams = {
     page,
@@ -95,9 +95,15 @@ export default function HomeScreen() {
 
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+      `}</style>
+      
       {isHomeView ? (
-        <section className="container-max px-4 pt-8">
-          <ProductSlider />
+        <section className="container-max px-4 pt-6">
+          <CategorySlider />
+          <h2 className="text-2xl font-display font-bold text-gray-900 mt-12 mb-2">Featured Products</h2>
+          <p className="text-gray-500 mb-8">Handpicked bestsellers just for you.</p>
         </section>
       ) : (
         <section className="bg-white border-b border-gray-200 py-12 px-4 mb-6">
