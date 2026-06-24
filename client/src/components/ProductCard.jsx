@@ -103,8 +103,8 @@ export default function ProductCard({ product }) {
 
       {/* Info */}
       <div className="p-4">
-        <p className="text-xs text-brand-400 font-medium mb-1">{category}</p>
-        <h3 className="text-sm font-semibold text-gray-100 line-clamp-2 leading-snug group-hover:text-white transition-colors mb-2">
+        <p className="text-xs text-brand-600 font-medium mb-1">{category}</p>
+        <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 leading-snug group-hover:text-brand-600 transition-colors mb-2">
           {name}
         </h3>
 
@@ -115,7 +115,7 @@ export default function ProductCard({ product }) {
               {[1, 2, 3, 4, 5].map((star) => (
                 <FiStar
                   key={star}
-                  className={`w-3 h-3 ${star <= Math.round(rating) ? 'fill-gold-400 text-gold-400' : 'text-gray-600'}`}
+                  className={`w-3 h-3 ${star <= Math.round(rating) ? 'fill-gold-400 text-gold-400' : 'text-gray-300'}`}
                 />
               ))}
             </div>
@@ -125,7 +125,7 @@ export default function ProductCard({ product }) {
 
         {/* Price */}
         <div className="flex items-center gap-2">
-          <span className="text-white font-bold text-base">₹{displayPrice.toLocaleString('en-IN')}</span>
+          <span className="text-gray-900 font-bold text-base">₹{displayPrice.toLocaleString('en-IN')}</span>
           {discount > 0 && (
             <span className="price-original">₹{price.toLocaleString('en-IN')}</span>
           )}
@@ -135,7 +135,7 @@ export default function ProductCard({ product }) {
         {sizes?.length > 0 && (
           <div className="flex gap-1 mt-2 flex-wrap">
             {sizes.slice(0, 5).map((size) => (
-              <span key={size} className="text-xs text-gray-600 border border-surface-border px-1.5 py-0.5 rounded">
+              <span key={size} className="text-xs text-gray-600 border border-gray-300 px-1.5 py-0.5 rounded">
                 {size}
               </span>
             ))}
