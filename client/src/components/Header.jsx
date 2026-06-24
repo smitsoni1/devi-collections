@@ -28,9 +28,11 @@ export default function Header() {
   const handleLogout = async () => {
     try {
       await logoutApi().unwrap();
-      dispatch(clearCredentials());
-      dispatch(clearCart());
       navigate('/');
+      setTimeout(() => {
+        dispatch(clearCredentials());
+        dispatch(clearCart());
+      }, 50);
       toast.success('Logged out successfully');
     } catch (err) {
       toast.error('Logout failed');
