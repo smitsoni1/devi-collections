@@ -20,7 +20,11 @@ export default function LoginScreen() {
     try {
       const result = await login({ email, password }).unwrap();
       dispatch(setCredentials(result.user));
-      navigate('/');
+      if (result.user.isAdmin) {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/');
+      }
       toast.success(`Welcome back, ${result.user.name.split(' ')[0]}! 🎉`);
     } catch (err) {
       toast.error(err?.data?.message || 'Login failed. Please try again.');

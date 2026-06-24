@@ -78,15 +78,17 @@ export default function Header() {
               <FiSearch className="w-5 h-5" />
             </Link>
 
-            {/* Cart */}
-            <Link to="/cart" className="relative btn-ghost p-2.5 rounded-xl" aria-label="Cart">
-              <FiShoppingBag className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand-500 text-white text-xs font-bold flex items-center justify-center animate-scale-in">
-                  {cartCount > 9 ? '9+' : cartCount}
-                </span>
-              )}
-            </Link>
+            {/* Cart - Hidden for Admins */}
+            {(!userInfo || !userInfo.isAdmin) && (
+              <Link to="/cart" className="relative btn-ghost p-2.5 rounded-xl" aria-label="Cart">
+                <FiShoppingBag className="w-5 h-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand-500 text-white text-xs font-bold flex items-center justify-center animate-scale-in">
+                    {cartCount > 9 ? '9+' : cartCount}
+                  </span>
+                )}
+              </Link>
+            )}
 
             {/* User Menu */}
             {userInfo ? (
@@ -118,13 +120,15 @@ export default function Header() {
                       >
                         <FiUser className="w-4 h-4" /> My Profile
                       </Link>
-                      <Link
-                        to="/orders"
-                        onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors"
-                      >
-                        <FiPackage className="w-4 h-4" /> My Orders
-                      </Link>
+                      {(!userInfo || !userInfo.isAdmin) && (
+                        <Link
+                          to="/orders"
+                          onClick={() => setDropdownOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors"
+                        >
+                          <FiPackage className="w-4 h-4" /> My Orders
+                        </Link>
+                      )}
                       {userInfo.isAdmin && (
                         <Link
                           to="/admin/dashboard"
