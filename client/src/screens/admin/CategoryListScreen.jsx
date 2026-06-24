@@ -3,6 +3,7 @@ import { FiPlus, FiTrash2, FiTag } from 'react-icons/fi';
 import {
   useGetCategoriesQuery,
   useCreateCategoryMutation,
+  useUpdateCategoryMutation,
   useDeleteCategoryMutation,
 } from '../../features/categories/categoriesApiSlice';
 import Loader from '../../components/Loader';
@@ -12,20 +13,36 @@ import { toast } from 'react-toastify';
 export default function CategoryListScreen() {
   const { data, isLoading, isError, error } = useGetCategoriesQuery();
   const [createCategory, { isLoading: isCreating }] = useCreateCategoryMutation();
+  const [updateCategory] = useUpdateCategoryMutation();
   const [deleteCategory, { isLoading: isDeleting }] = useDeleteCategoryMutation();
 
   const [newCategoryName, setNewCategoryName] = useState('');
+  const [inNavbar, setInNavbar] = useState(false);
 
   const handleCreateCategory = async (e) => {
     e.preventDefault();
     if (!newCategoryName.trim()) return;
     
     try {
-      await createCategory({ name: newCategoryName.trim() }).unwrap();
+      await createCategory({ name: newCategoryName.trim(), inNavbar }).unwrap();
       setNewCategoryName('');
+      setInNavbar(false);
       toast.success('Category created successfully');
     } catch (err) {
       toast.error(err?.data?.message || 'Failed to create category');
+    }
+  };
+
+  const handleToggleNavbar = async (category) => {
+    try {
+      await updateCategory({
+        id: category._id,
+        name: category.name,
+        inNavbar: !category.inNavbar
+      }).unwrap();
+      toast.success(`${category.name} ${!category.inNavbar ? 'added to' : 'removed from'} navbar`);
+    } catch (err) {
+      toast.error(err?.data?.message || 'Failed to update status');
     }
   };
 
@@ -69,6 +86,18 @@ export default function CategoryListScreen() {
                   required
                 />
               </div>
+              <div className="mb-6 flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="inNavbar"
+                  checked={inNavbar}
+                  onChange={(e) => setInNavbar(e.target.checked)}
+                  className="w-4 h-4 text-brand-600 rounded border-gray-300 focus:ring-brand-500"
+                />
+                <label htmlFor="inNavbar" className="text-sm text-gray-700 cursor-pointer">
+                  Show in Top Navbar
+                </label>
+              </div>
               <button
                 type="submit"
                 disabled={isCreating}
@@ -88,6 +117,7 @@ export default function CategoryListScreen() {
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200">
                     <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Category Name</th>
+                    <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">In Navbar</th>
                     <th className="p-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Actions</th>
                   </tr>
                 </thead>
@@ -95,6 +125,17 @@ export default function CategoryListScreen() {
                   {data?.categories?.map((category) => (
                     <tr key={category._id} className="hover:bg-gray-50/50 transition-colors">
                       <td className="p-4 font-medium text-gray-900">{category.name}</td>
+                      <td className="p-4">
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            className="sr-only peer"
+                            checked={category.inNavbar}
+                            onChange={() => handleToggleNavbar(category)}
+                          />
+                          <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-500"></div>
+                        </label>
+                      </td>
                       <td className="p-4 text-right">
                         <button
                           onClick={() => handleDelete(category._id)}

@@ -27,7 +27,7 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const { data: categoriesData } = useGetCategoriesQuery();
-  const categories = categoriesData?.categories?.slice(0, 5) || []; // Top 5 in header
+  const categories = categoriesData?.categories?.filter(cat => cat.inNavbar) || [];
 
   const handleLogout = async () => {
     try {

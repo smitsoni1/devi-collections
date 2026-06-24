@@ -5,7 +5,7 @@ import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice
 export default function Footer() {
   const year = new Date().getFullYear();
   const { data: categoriesData } = useGetCategoriesQuery();
-  const categories = categoriesData?.categories?.slice(0, 5).map(c => c.name) || [];
+  const categories = categoriesData?.categories?.filter(c => c.inNavbar).map(c => c.name) || [];
   const shopLinks = [...categories, 'New Arrivals'];
 
   return (
