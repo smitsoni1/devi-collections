@@ -73,7 +73,7 @@ export default function ProductListScreen() {
                             className="w-10 h-12 object-cover rounded-lg"
                           />
                           <div>
-                            <p className="font-medium text-white text-sm line-clamp-1 max-w-40">{product.name}</p>
+                            <p className="font-medium text-gray-900 text-sm line-clamp-1 max-w-40">{product.name}</p>
                             <p className="text-xs text-gray-500 font-mono">{product._id.slice(-8)}</p>
                           </div>
                         </div>
@@ -83,7 +83,7 @@ export default function ProductListScreen() {
                       </td>
                       <td className="px-4 py-3">
                         <div>
-                          <p className="font-semibold text-white">₹{(product.discountPrice || product.price).toLocaleString('en-IN')}</p>
+                          <p className="font-semibold text-gray-900">₹{(product.discountPrice || product.price).toLocaleString('en-IN')}</p>
                           {product.discountPrice > 0 && (
                             <p className="text-xs price-original">₹{product.price.toLocaleString('en-IN')}</p>
                           )}
@@ -99,7 +99,7 @@ export default function ProductListScreen() {
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <p className="text-white text-sm">{product.rating?.toFixed(1)} ⭐ ({product.numReviews})</p>
+                        <p className="text-gray-900 text-sm">{product.rating?.toFixed(1)} ⭐ ({product.numReviews})</p>
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function ProductListScreen() {
                 <button
                   key={p}
                   onClick={() => setPage(p)}
-                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-400 hover:border-brand-600'}`}
+                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-600 hover:border-brand-600'}`}
                 >
                   {p}
                 </button>

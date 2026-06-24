@@ -97,7 +97,7 @@ export default function ProductEditScreen() {
 
   return (
     <div>
-      <button onClick={() => navigate('/admin/products')} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-sm">
+      <button onClick={() => navigate('/admin/products')} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors mb-6 text-sm">
         <FiArrowLeft className="w-4 h-4" /> Back to Products
       </button>
 
@@ -110,7 +110,7 @@ export default function ProductEditScreen() {
         {/* Main Fields */}
         <div className="lg:col-span-2 space-y-5">
           <div className="card p-6 space-y-5">
-            <h2 className="font-semibold text-white border-b border-surface-border pb-3">Basic Information</h2>
+            <h2 className="font-semibold text-gray-900 border-b border-surface-border pb-3">Basic Information</h2>
 
             <div>
               <label className="label">Product Name *</label>
@@ -214,7 +214,7 @@ export default function ProductEditScreen() {
               >
                 <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200 ${form.isFeatured ? 'translate-x-6' : 'translate-x-0.5'}`} />
               </button>
-              <label className="text-sm text-gray-300 cursor-pointer" onClick={() => setForm({ ...form, isFeatured: !form.isFeatured })}>
+              <label className="text-sm text-gray-700 cursor-pointer" onClick={() => setForm({ ...form, isFeatured: !form.isFeatured })}>
                 Featured Product <span className="text-xs text-gray-500">(shown on homepage)</span>
               </label>
             </div>
@@ -224,7 +224,7 @@ export default function ProductEditScreen() {
         {/* Image Upload */}
         <div className="space-y-5">
           <div className="card p-6">
-            <h2 className="font-semibold text-white border-b border-surface-border pb-3 mb-4">Product Images</h2>
+            <h2 className="font-semibold text-gray-900 border-b border-surface-border pb-3 mb-4">Product Images</h2>
 
             {/* Existing images */}
             {existingImages.length > 0 && (
@@ -246,7 +246,7 @@ export default function ProductEditScreen() {
               className="block border-2 border-dashed border-surface-border rounded-xl p-6 text-center cursor-pointer hover:border-brand-500 transition-colors group"
             >
               <FiUpload className="w-8 h-8 text-gray-500 group-hover:text-brand-400 transition-colors mx-auto mb-2" />
-              <p className="text-sm text-gray-400 group-hover:text-gray-300">
+              <p className="text-sm text-gray-500 group-hover:text-gray-700">
                 {imagePreviews.length > 0 ? `${imagePreviews.length} new image(s) selected` : 'Click to upload images'}
               </p>
               <p className="text-xs text-gray-600 mt-1">JPEG, PNG, WebP · Max 5MB each · Up to 5 files</p>

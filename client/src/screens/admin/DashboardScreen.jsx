@@ -63,7 +63,7 @@ export default function DashboardScreen() {
             <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${bg} mb-3`}>
               <Icon className={`w-5 h-5 ${color}`} />
             </div>
-            <p className="text-2xl font-bold text-white">{value}</p>
+            <p className="text-2xl font-bold text-gray-900">{value}</p>
             {sub && <p className="text-xs text-gray-500 mt-0.5">{sub}</p>}
             <p className="text-sm text-gray-500 mt-1">{label}</p>
           </div>
@@ -76,7 +76,7 @@ export default function DashboardScreen() {
         <div className="card p-6">
           <div className="flex items-center gap-2 mb-5">
             <FiTrendingUp className="w-5 h-5 text-brand-400" />
-            <h2 className="font-semibold text-white">Monthly Revenue</h2>
+            <h2 className="font-semibold text-gray-900">Monthly Revenue</h2>
           </div>
           {metrics.monthlySales?.length > 0 ? (
             <div className="space-y-3">
@@ -88,7 +88,7 @@ export default function DashboardScreen() {
                   <div key={`${month._id.year}-${month._id.month}`}>
                     <div className="flex justify-between text-xs text-gray-500 mb-1">
                       <span>{monthName}</span>
-                      <span className="text-white">₹{month.revenue.toLocaleString('en-IN')} ({month.orders} orders)</span>
+                      <span className="text-gray-900">₹{month.revenue.toLocaleString('en-IN')} ({month.orders} orders)</span>
                     </div>
                     <div className="h-2 bg-surface-elevated rounded-full overflow-hidden">
                       <div
@@ -110,7 +110,7 @@ export default function DashboardScreen() {
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
               <FiAlertTriangle className="w-5 h-5 text-amber-400" />
-              <h2 className="font-semibold text-white">Low Stock Alerts</h2>
+              <h2 className="font-semibold text-gray-900">Low Stock Alerts</h2>
             </div>
             <Link to="/admin/products" className="text-xs text-brand-400 hover:text-brand-300 flex items-center gap-1">
               View All <FiArrowRight className="w-3 h-3" />
@@ -123,7 +123,7 @@ export default function DashboardScreen() {
               {metrics.lowStockProducts.map((product) => (
                 <div key={product._id} className="flex items-center justify-between p-3 rounded-xl bg-amber-500/5 border border-amber-500/20">
                   <div>
-                    <p className="text-sm font-medium text-white truncate max-w-40">{product.name}</p>
+                    <p className="text-sm font-medium text-gray-900 truncate max-w-40">{product.name}</p>
                     <p className="text-xs text-gray-500">{product.category}</p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -143,7 +143,7 @@ export default function DashboardScreen() {
         {/* Recent Orders */}
         <div className="card p-6 lg:col-span-2">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="font-semibold text-white">Recent Orders</h2>
+            <h2 className="font-semibold text-gray-900">Recent Orders</h2>
             <Link to="/admin/orders" className="text-xs text-brand-400 hover:text-brand-300 flex items-center gap-1">
               View All <FiArrowRight className="w-3 h-3" />
             </Link>
@@ -167,9 +167,9 @@ export default function DashboardScreen() {
                   {metrics.recentOrders.map((order) => (
                     <tr key={order._id} className="hover:bg-surface-elevated/50 transition-colors">
                       <td className="py-3 font-mono text-brand-300 text-xs">#{order._id.slice(-8).toUpperCase()}</td>
-                      <td className="py-3 text-gray-300">{order.user?.name}</td>
+                      <td className="py-3 text-gray-700">{order.user?.name}</td>
                       <td className="py-3 text-gray-500">{new Date(order.createdAt).toLocaleDateString('en-IN')}</td>
-                      <td className="py-3 text-white font-medium">₹{order.totalPrice?.toLocaleString('en-IN')}</td>
+                      <td className="py-3 text-gray-900 font-medium">₹{order.totalPrice?.toLocaleString('en-IN')}</td>
                       <td className="py-3">
                         {order.isPaid
                           ? <span className="badge-success text-xs">Paid</span>

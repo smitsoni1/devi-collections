@@ -64,17 +64,17 @@ export default function UserListScreen() {
                           <div className="w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold">
                             {user.name?.charAt(0).toUpperCase()}
                           </div>
-                          <span className="text-white font-medium text-sm">{user.name}</span>
+                          <span className="text-gray-900 font-medium text-sm">{user.name}</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-gray-400">{user.email}</td>
+                      <td className="px-4 py-3 text-gray-700">{user.email}</td>
                       <td className="px-4 py-3 text-gray-500 text-xs">
                         {new Date(user.createdAt).toLocaleDateString('en-IN')}
                       </td>
                       <td className="px-4 py-3">
                         {user.roles.includes('admin')
                           ? <span className="badge-brand text-xs">Admin</span>
-                          : <span className="badge text-xs bg-surface-elevated border border-surface-border text-gray-400">Customer</span>
+                          : <span className="badge text-xs bg-surface-elevated border border-surface-border text-gray-600">Customer</span>
                         }
                       </td>
                       <td className="px-4 py-3">
@@ -111,7 +111,7 @@ export default function UserListScreen() {
             <div className="flex justify-center gap-2 mt-6">
               {Array.from({ length: data.pages }, (_, i) => i + 1).map((p) => (
                 <button key={p} onClick={() => setPage(p)}
-                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-400 hover:border-brand-600'}`}>
+                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-600 hover:border-brand-600'}`}>
                   {p}
                 </button>
               ))}

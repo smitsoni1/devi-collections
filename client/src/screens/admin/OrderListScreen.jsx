@@ -38,7 +38,7 @@ export default function OrderListScreen() {
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition-all ${
                   (s === 'all' && !statusFilter) || statusFilter === s
                     ? 'bg-brand-gradient text-white'
-                    : 'bg-surface-card border border-surface-border text-gray-400 hover:border-brand-700'
+                    : 'bg-surface-card border border-surface-border text-gray-600 hover:border-brand-700'
                 }`}
               >
                 {s}
@@ -67,14 +67,14 @@ export default function OrderListScreen() {
                     <tr key={order._id} className="hover:bg-surface-elevated/40 transition-colors">
                       <td className="px-4 py-3 font-mono text-brand-300 text-xs">#{order._id.slice(-10).toUpperCase()}</td>
                       <td className="px-4 py-3">
-                        <p className="text-white text-sm">{order.user?.name}</p>
+                        <p className="text-gray-900 text-sm">{order.user?.name}</p>
                         <p className="text-xs text-gray-500">{order.user?.email}</p>
                       </td>
                       <td className="px-4 py-3 text-gray-500 text-xs whitespace-nowrap">
                         {new Date(order.createdAt).toLocaleDateString('en-IN')}
                       </td>
-                      <td className="px-4 py-3 text-gray-400">{order.orderItems?.length}</td>
-                      <td className="px-4 py-3 font-semibold text-white">₹{order.totalPrice?.toLocaleString('en-IN')}</td>
+                      <td className="px-4 py-3 text-gray-700">{order.orderItems?.length}</td>
+                      <td className="px-4 py-3 font-semibold text-gray-900">₹{order.totalPrice?.toLocaleString('en-IN')}</td>
                       <td className="px-4 py-3">
                         {order.isPaid
                           ? <span className="badge-success text-xs">Paid</span>
@@ -95,7 +95,7 @@ export default function OrderListScreen() {
                           <Link
                             to={`/order/${order._id}`}
                             target="_blank"
-                            className="w-7 h-7 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-gray-400 hover:text-brand-300 hover:border-brand-500 transition-colors"
+                            className="w-7 h-7 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-gray-600 hover:text-brand-600 hover:border-brand-500 transition-colors"
                           >
                             <FiExternalLink className="w-3.5 h-3.5" />
                           </Link>
@@ -122,7 +122,7 @@ export default function OrderListScreen() {
             <div className="flex justify-center gap-2 mt-6">
               {Array.from({ length: data.pages }, (_, i) => i + 1).map((p) => (
                 <button key={p} onClick={() => setPage(p)}
-                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-400 hover:border-brand-600'}`}>
+                  className={`w-9 h-9 rounded-xl text-sm font-medium transition-all ${p === page ? 'bg-brand-gradient text-white' : 'bg-surface-card border border-surface-border text-gray-600 hover:border-brand-600'}`}>
                   {p}
                 </button>
               ))}
