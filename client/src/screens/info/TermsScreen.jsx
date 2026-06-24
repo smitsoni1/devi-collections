@@ -4,7 +4,7 @@ export default function TermsScreen() {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Terms of Service</h1>
         <div className="prose prose-brand max-w-none text-gray-600 space-y-4">
-          <p className="text-sm text-gray-500 mb-8">Last Updated: January 1, 2026</p>
+          <p className="text-sm text-gray-500 mb-8">Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
           
           <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">1. Acceptance of Terms</h2>
           <p>By accessing and using Devi Collections, you accept and agree to be bound by the terms and provision of this agreement.</p>

@@ -4,7 +4,7 @@ export default function PrivacyScreen() {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
         <div className="prose prose-brand max-w-none text-gray-600 space-y-4">
-          <p className="text-sm text-gray-500 mb-8">Last Updated: January 1, 2026</p>
+          <p className="text-sm text-gray-500 mb-8">Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
           
           <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">1. Information We Collect</h2>
           <p>We collect information you provide directly to us, such as when you create an account, make a purchase, or contact customer support. This includes your name, email, shipping address, and phone number.</p>
