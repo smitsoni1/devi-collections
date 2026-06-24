@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useSyncCartMutation } from './features/auth/authSlice';
@@ -40,7 +40,14 @@ export default function App() {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
   const [syncCart] = useSyncCartMutation();
+  const location = useLocation();
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  // Sync cart to backend
   useEffect(() => {
     if (userInfo) {
       syncCart({ cartItems });
