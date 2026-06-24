@@ -23,10 +23,12 @@ export default function ProductCard({ product }) {
     numReviews,
     countInStock,
     sizes,
+    discountTag,
   } = product;
 
   const mainImage = images?.[0]?.secure_url || 'https://placehold.co/400x500/1a1228/c44ef0?text=No+Image';
   const discount = discountPrice > 0 ? Math.round(((price - discountPrice) / price) * 100) : 0;
+  const finalDiscountTag = discountTag ? discountTag : (discount > 0 ? `${discount}% OFF` : null);
   const displayPrice = discountPrice > 0 ? discountPrice : price;
   const inStock = countInStock > 0;
 
@@ -71,8 +73,8 @@ export default function ProductCard({ product }) {
 
         {/* Overlay Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-          {discount > 0 && (
-            <span className="badge-gold text-xs">{discount}% OFF</span>
+          {finalDiscountTag && (
+            <span className="badge-gold text-xs">{finalDiscountTag}</span>
           )}
           {!inStock && (
             <span className="badge-danger text-xs">Out of Stock</span>

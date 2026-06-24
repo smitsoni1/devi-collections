@@ -111,7 +111,7 @@ export const getProductById = asyncHandler(async (req, res) => {
 // ─── @access Private/Admin
 export const createProduct = asyncHandler(async (req, res) => {
   const {
-    name, description, price, discountPrice,
+    name, description, price, discountPrice, discountTag,
     category, sizes, countInStock, fabric, color, isFeatured,
   } = req.body;
 
@@ -134,6 +134,7 @@ export const createProduct = asyncHandler(async (req, res) => {
     description,
     price: Number(price),
     discountPrice: Number(discountPrice) || 0,
+    discountTag: discountTag || '',
     category,
     sizes: sizes ? (Array.isArray(sizes) ? sizes : sizes.split(',')) : [],
     countInStock: Number(countInStock) || 0,
@@ -159,7 +160,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
   }
 
   const {
-    name, description, price, discountPrice,
+    name, description, price, discountPrice, discountTag,
     category, sizes, countInStock, fabric, color, isFeatured,
   } = req.body;
 
@@ -180,6 +181,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
   product.description = description || product.description;
   product.price = price !== undefined ? Number(price) : product.price;
   product.discountPrice = discountPrice !== undefined ? Number(discountPrice) : product.discountPrice;
+  product.discountTag = discountTag !== undefined ? discountTag : product.discountTag;
   product.category = category || product.category;
   product.sizes = sizes
     ? (Array.isArray(sizes) ? sizes : sizes.split(','))

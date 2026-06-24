@@ -24,7 +24,7 @@ export default function ProductEditScreen() {
   const { data: sizesData, isLoading: sizesLoading } = useGetSizesQuery();
 
   const [form, setForm] = useState({
-    name: '', description: '', price: '', discountPrice: '',
+    name: '', description: '', price: '', discountPrice: '', discountTag: '',
     category: '', sizes: [], countInStock: '', fabric: '', color: '',
     isFeatured: false,
   });
@@ -40,6 +40,7 @@ export default function ProductEditScreen() {
         description: p.description || '',
         price: p.price || '',
         discountPrice: p.discountPrice || '',
+        discountTag: p.discountTag || '',
         category: p.category || '',
         sizes: p.sizes || [],
         countInStock: p.countInStock ?? '',
@@ -130,7 +131,7 @@ export default function ProductEditScreen() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className="label">Original Price (₹) *</label>
                 <input type="number" value={form.price}
@@ -138,10 +139,16 @@ export default function ProductEditScreen() {
                   className="input" placeholder="999" min="0" required />
               </div>
               <div>
-                <label className="label">Sale Price (₹) <span className="text-gray-500 text-xs">(optional)</span></label>
+                <label className="label">Sale Price (₹)</label>
                 <input type="number" value={form.discountPrice}
                   onChange={(e) => setForm({ ...form, discountPrice: e.target.value })}
                   className="input" placeholder="799" min="0" />
+              </div>
+              <div>
+                <label className="label">Discount Tag Text</label>
+                <input value={form.discountTag}
+                  onChange={(e) => setForm({ ...form, discountTag: e.target.value })}
+                  className="input" placeholder="e.g. FLAT 50% OFF" />
               </div>
             </div>
 

@@ -39,11 +39,12 @@ export default function ProductScreen() {
   const {
     name, description, price, discountPrice, images, category,
     rating: avgRating, numReviews, reviews, countInStock, sizes,
-    fabric, color, isFeatured,
+    fabric, color, isFeatured, discountTag
   } = product;
 
   const displayPrice = discountPrice > 0 ? discountPrice : price;
   const discount = discountPrice > 0 ? Math.round(((price - discountPrice) / price) * 100) : 0;
+  const finalDiscountTag = discountTag ? discountTag : (discount > 0 ? `${discount}% OFF` : null);
   const inStock = countInStock > 0;
   const mainImage = images?.[selectedImage]?.secure_url || 'https://placehold.co/600x750/ffffff/c44ef0?text=No+Image';
 
@@ -108,9 +109,9 @@ export default function ProductScreen() {
               alt={name}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {discount > 0 && (
+            {finalDiscountTag && (
               <div className="absolute top-4 left-4">
-                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-sm font-bold shadow-sm">{discount}% OFF</span>
+                <span className="bg-red-500 text-white px-2 py-1 rounded-lg text-sm font-bold shadow-sm">{finalDiscountTag}</span>
               </div>
             )}
             {isFeatured && (

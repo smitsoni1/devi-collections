@@ -38,7 +38,13 @@ const productSchema = new mongoose.Schema(
     },
     discountPrice: {
       type: Number,
+      required: false,
       default: 0,
+    },
+    discountTag: {
+      type: String,
+      required: false,
+      default: '',
     },
     category: {
       type: String,
