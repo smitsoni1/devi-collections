@@ -42,7 +42,7 @@ export default function HomeScreen() {
     ...(rating && { rating }),
   };
 
-  const { data, isLoading, isError, error } = useGetProductsQuery(queryParams);
+  const { data, isLoading, isFetching, isError, error } = useGetProductsQuery(queryParams);
 
   useEffect(() => {
     setCategory(searchParams.get('category') || '');
@@ -250,7 +250,7 @@ export default function HomeScreen() {
           </div>
 
           {/* Grid */}
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <SkeletonGrid count={9} />
           ) : isError ? (
             <Message variant="danger">{error?.data?.message || 'Failed to load products'}</Message>
