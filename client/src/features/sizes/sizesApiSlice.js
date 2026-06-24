@@ -3,12 +3,12 @@ import { apiSlice } from '../api/apiSlice';
 export const sizesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getSizes: builder.query({
-      query: () => '/api/sizes',
+      query: () => '/sizes',
       providesTags: ['Size'],
     }),
     createSize: builder.mutation({
       query: (data) => ({
-        url: '/api/sizes',
+        url: '/sizes',
         method: 'POST',
         body: data,
       }),
@@ -16,7 +16,7 @@ export const sizesApiSlice = apiSlice.injectEndpoints({
     }),
     updateSize: builder.mutation({
       query: ({ id, name }) => ({
-        url: `/api/sizes/${id}`,
+        url: `/sizes/${id}`,
         method: 'PUT',
         body: { name },
       }),
@@ -24,7 +24,7 @@ export const sizesApiSlice = apiSlice.injectEndpoints({
     }),
     deleteSize: builder.mutation({
       query: (id) => ({
-        url: `/api/sizes/${id}`,
+        url: `/sizes/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Size'],

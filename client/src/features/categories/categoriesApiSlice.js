@@ -3,12 +3,12 @@ import { apiSlice } from '../api/apiSlice';
 export const categoriesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getCategories: builder.query({
-      query: () => '/api/categories',
+      query: () => '/categories',
       providesTags: ['Category'],
     }),
     createCategory: builder.mutation({
       query: (data) => ({
-        url: '/api/categories',
+        url: '/categories',
         method: 'POST',
         body: data,
       }),
@@ -16,7 +16,7 @@ export const categoriesApiSlice = apiSlice.injectEndpoints({
     }),
     updateCategory: builder.mutation({
       query: ({ id, name }) => ({
-        url: `/api/categories/${id}`,
+        url: `/categories/${id}`,
         method: 'PUT',
         body: { name },
       }),
@@ -24,7 +24,7 @@ export const categoriesApiSlice = apiSlice.injectEndpoints({
     }),
     deleteCategory: builder.mutation({
       query: (id) => ({
-        url: `/api/categories/${id}`,
+        url: `/categories/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Category'],
