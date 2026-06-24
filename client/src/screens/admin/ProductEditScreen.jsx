@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 export default function ProductEditScreen() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const isNewProduct = id === 'new';
+  const isNewProduct = !id || id === 'new';
 
   const { data, isLoading } = useGetProductByIdQuery(id, { skip: isNewProduct });
   const [createProduct, { isLoading: creating }] = useCreateProductMutation();
