@@ -13,7 +13,7 @@ import {
   FiSearch,
 } from 'react-icons/fi';
 import { clearCredentials, useLogoutMutation } from '../features/auth/authSlice';
-import { selectCartCount } from '../features/cart/cartSlice';
+import { selectCartCount, clearCart } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 
 export default function Header() {
@@ -29,6 +29,7 @@ export default function Header() {
     try {
       await logoutApi().unwrap();
       dispatch(clearCredentials());
+      dispatch(clearCart());
       navigate('/login');
       toast.success('Logged out successfully');
     } catch (err) {
