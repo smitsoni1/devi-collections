@@ -27,6 +27,8 @@ const ProductListScreen = lazy(() => import('./screens/admin/ProductListScreen')
 const ProductEditScreen = lazy(() => import('./screens/admin/ProductEditScreen'));
 const OrderListScreen = lazy(() => import('./screens/admin/OrderListScreen'));
 const UserListScreen = lazy(() => import('./screens/admin/UserListScreen'));
+const CategoryListScreen = lazy(() => import('./screens/admin/CategoryListScreen'));
+const SizeListScreen = lazy(() => import('./screens/admin/SizeListScreen'));
 
 // Info screens (lazy)
 const ReturnsScreen = lazy(() => import('./screens/info/ReturnsScreen'));
@@ -93,6 +95,8 @@ export default function App() {
                 <Route path="products/:id/edit" element={<ProductEditScreen />} />
                 <Route path="orders" element={<OrderListScreen />} />
                 <Route path="users" element={<UserListScreen />} />
+                <Route path="categories" element={<CategoryListScreen />} />
+                <Route path="sizes" element={<SizeListScreen />} />
               </Route>
             </Route>
 

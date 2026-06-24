@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fi';
 import { clearCredentials, useLogoutMutation } from '../features/auth/authSlice';
 import { selectCartCount, clearCart } from '../features/cart/cartSlice';
+import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
 import { toast } from 'react-toastify';
 
 export default function Header() {
@@ -24,6 +25,9 @@ export default function Header() {
   const [logoutApi] = useLogoutMutation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const { data: categoriesData } = useGetCategoriesQuery();
+  const categories = categoriesData?.categories?.slice(0, 5) || []; // Top 5 in header
 
   const handleLogout = async () => {
     try {
@@ -38,8 +42,6 @@ export default function Header() {
       toast.error('Logout failed');
     }
   };
-
-  const categories = ['Kurti', 'Saree', 'Lehenga', 'Salwar Suit', 'Dupatta'];
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
@@ -63,11 +65,11 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-1">
             {categories.map((cat) => (
               <Link
-                key={cat}
-                to={`/?category=${cat}`}
+                key={cat._id}
+                to={`/?category=${cat.name}`}
                 className="btn-ghost text-sm"
               >
-                {cat}
+                {cat.name}
               </Link>
             ))}
           </nav>
@@ -174,12 +176,12 @@ export default function Header() {
             <div className="flex flex-wrap gap-1">
               {categories.map((cat) => (
                 <Link
-                  key={cat}
-                  to={`/?category=${cat}`}
+                  key={cat._id}
+                  to={`/?category=${cat.name}`}
                   onClick={() => setMenuOpen(false)}
                   className="btn-ghost text-sm"
                 >
-                  {cat}
+                  {cat.name}
                 </Link>
               ))}
             </div>

@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiFacebook, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { data: categoriesData } = useGetCategoriesQuery();
+  const categories = categoriesData?.categories?.slice(0, 5).map(c => c.name) || [];
+  const shopLinks = [...categories, 'New Arrivals'];
 
   return (
     <footer className="bg-gray-900 mt-auto">
@@ -38,7 +42,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Shop</h4>
             <ul className="space-y-2.5">
-              {['Kurti', 'Saree', 'Lehenga', 'Salwar Suit', 'Dupatta', 'New Arrivals'].map((item) => (
+              {shopLinks.map((item) => (
                 <li key={item}>
                   <Link
                     to={item === 'New Arrivals' ? '/?sort=newest' : `/?category=${item}`}

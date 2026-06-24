@@ -8,6 +8,8 @@ import { useState } from 'react';
 const navItems = [
   { label: 'Dashboard', path: '/admin/dashboard', icon: FiBarChart2 },
   { label: 'Products', path: '/admin/products', icon: FiShoppingBag },
+  { label: 'Categories', path: '/admin/categories', icon: FiShoppingBag },
+  { label: 'Sizes', path: '/admin/sizes', icon: FiPackage },
   { label: 'Orders', path: '/admin/orders', icon: FiPackage },
   { label: 'Customers', path: '/admin/users', icon: FiUsers },
 ];

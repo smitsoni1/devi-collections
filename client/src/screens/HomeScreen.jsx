@@ -5,9 +5,9 @@ import ProductCard from '../components/ProductCard';
 import { SkeletonGrid } from '../components/Loader';
 import Message from '../components/Message';
 import { useGetProductsQuery } from '../features/products/productsApiSlice';
+import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
+import { useGetSizesQuery } from '../features/sizes/sizesApiSlice';
 
-const CATEGORIES = ['All', 'Kurti', 'Saree', 'Lehenga', 'Salwar Suit', 'Dupatta', 'Dress Material'];
-const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Free Size'];
 const FABRICS = ['Cotton', 'Silk', 'Georgette', 'Chiffon', 'Crepe', 'Rayon'];
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest First' },
@@ -43,6 +43,10 @@ export default function HomeScreen() {
   };
 
   const { data, isLoading, isFetching, isError, error } = useGetProductsQuery(queryParams);
+  const { data: categoriesData } = useGetCategoriesQuery();
+  const categories = ['All', ...(categoriesData?.categories?.map(c => c.name) || [])];
+  const { data: sizesData } = useGetSizesQuery();
+  const sizes = sizesData?.sizes?.map(s => s.name) || [];
 
   useEffect(() => {
     setCategory(searchParams.get('category') || '');
@@ -141,7 +145,7 @@ export default function HomeScreen() {
             <div className="mb-6">
               <h4 className="font-medium text-sm text-gray-900 mb-3">Category</h4>
               <div className="space-y-2">
-                {CATEGORIES.map((cat) => (
+                {categories.map((cat) => (
                   <label key={cat} className="flex items-center gap-2 cursor-pointer">
                     <input 
                       type="radio" 
@@ -186,7 +190,7 @@ export default function HomeScreen() {
             <div className="mb-6">
               <h4 className="font-medium text-sm text-gray-900 mb-3">Size</h4>
               <div className="flex flex-wrap gap-2">
-                {SIZES.map((s) => (
+                {sizes.map((s) => (
                   <button
                     key={s}
                     onClick={() => setSize(size === s ? '' : s)}

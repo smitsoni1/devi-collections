@@ -16,6 +16,8 @@ import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import sizeRoutes from './routes/sizeRoutes.js';
 
 // ─── Load env variables ───────────────────────────────────────────────────────
 dotenv.config();
@@ -70,6 +72,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/sizes', sizeRoutes);
 
 // ─── Health Check ─────────────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => {

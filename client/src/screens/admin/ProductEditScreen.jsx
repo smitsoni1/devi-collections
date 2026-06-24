@@ -6,12 +6,11 @@ import {
   useCreateProductMutation,
   useUpdateProductMutation,
 } from '../../features/products/productsApiSlice';
+import { useGetCategoriesQuery } from '../../features/categories/categoriesApiSlice';
+import { useGetSizesQuery } from '../../features/sizes/sizesApiSlice';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { toast } from 'react-toastify';
-
-const CATEGORIES = ['Kurti', 'Saree', 'Lehenga', 'Salwar Suit', 'Dupatta', 'Dress Material', 'Other'];
-const ALL_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Free Size'];
 
 export default function ProductEditScreen() {
   const { id } = useParams();
@@ -21,6 +20,8 @@ export default function ProductEditScreen() {
   const { data, isLoading } = useGetProductByIdQuery(id, { skip: isNewProduct });
   const [createProduct, { isLoading: creating }] = useCreateProductMutation();
   const [updateProduct, { isLoading: updating }] = useUpdateProductMutation();
+  const { data: categoriesData, isLoading: categoriesLoading } = useGetCategoriesQuery();
+  const { data: sizesData, isLoading: sizesLoading } = useGetSizesQuery();
 
   const [form, setForm] = useState({
     name: '', description: '', price: '', discountPrice: '',
@@ -167,18 +168,20 @@ export default function ProductEditScreen() {
             <div>
               <label className="label">Category *</label>
               <div className="flex flex-wrap gap-2">
-                {CATEGORIES.map((cat) => (
+                {categoriesLoading ? (
+                  <Loader text="" />
+                ) : categoriesData?.categories?.map((cat) => (
                   <button
-                    key={cat}
+                    key={cat._id}
                     type="button"
-                    onClick={() => setForm({ ...form, category: cat })}
+                    onClick={() => setForm({ ...form, category: cat.name })}
                     className={`px-4 py-2 rounded-xl text-sm font-medium border-2 transition-all ${
-                      form.category === cat
+                      form.category === cat.name
                         ? 'border-brand-500 bg-brand-950 text-brand-300'
                         : 'border-surface-border text-gray-500 hover:border-brand-700'
                     }`}
                   >
-                    {cat}
+                    {cat.name}
                   </button>
                 ))}
               </div>
@@ -188,18 +191,20 @@ export default function ProductEditScreen() {
             <div>
               <label className="label">Available Sizes</label>
               <div className="flex flex-wrap gap-2">
-                {ALL_SIZES.map((size) => (
+                {sizesLoading ? (
+                  <Loader text="" />
+                ) : sizesData?.sizes?.map((sz) => (
                   <button
-                    key={size}
+                    key={sz._id}
                     type="button"
-                    onClick={() => toggleSize(size)}
-                    className={`w-14 h-10 rounded-xl border-2 text-sm font-medium transition-all ${
-                      form.sizes.includes(size)
+                    onClick={() => toggleSize(sz.name)}
+                    className={`px-4 py-2 rounded-xl border-2 text-sm font-medium transition-all ${
+                      form.sizes.includes(sz.name)
                         ? 'border-brand-500 bg-brand-950 text-brand-300'
                         : 'border-surface-border text-gray-500 hover:border-brand-700'
                     }`}
                   >
-                    {size}
+                    {sz.name}
                   </button>
                 ))}
               </div>

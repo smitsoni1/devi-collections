@@ -43,11 +43,9 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, 'Category is required'],
-      enum: ['Kurti', 'Saree', 'Lehenga', 'Dupatta', 'Salwar Suit', 'Dress Material', 'Other'],
     },
     sizes: {
       type: [String],
-      enum: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Free Size'],
       default: [],
     },
     images: [imageSchema],
