@@ -58,7 +58,7 @@ export default function Footer() {
               {[
                 { label: 'Track Order', to: '/orders' },
                 { label: 'Returns & Exchange', to: '/returns' },
-                { label: 'Shipping Policy', to: '/shipping' },
+                { label: 'Shipping Policy', to: '/shipping-policy' },
                 { label: 'Size Guide', to: '/size-guide' },
                 { label: 'FAQ', to: '/faq' },
               ].map(({ label, to }) => (

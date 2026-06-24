@@ -28,6 +28,14 @@ const ProductEditScreen = lazy(() => import('./screens/admin/ProductEditScreen')
 const OrderListScreen = lazy(() => import('./screens/admin/OrderListScreen'));
 const UserListScreen = lazy(() => import('./screens/admin/UserListScreen'));
 
+// Info screens (lazy)
+const ReturnsScreen = lazy(() => import('./screens/info/ReturnsScreen'));
+const ShippingPolicyScreen = lazy(() => import('./screens/info/ShippingPolicyScreen'));
+const SizeGuideScreen = lazy(() => import('./screens/info/SizeGuideScreen'));
+const FAQScreen = lazy(() => import('./screens/info/FAQScreen'));
+const PrivacyScreen = lazy(() => import('./screens/info/PrivacyScreen'));
+const TermsScreen = lazy(() => import('./screens/info/TermsScreen'));
+
 export default function App() {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
@@ -60,6 +68,14 @@ export default function App() {
               <Route path="/orders" element={<MyOrdersScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
             </Route>
+
+            {/* Info Routes */}
+            <Route path="/returns" element={<ReturnsScreen />} />
+            <Route path="/shipping-policy" element={<ShippingPolicyScreen />} />
+            <Route path="/size-guide" element={<SizeGuideScreen />} />
+            <Route path="/faq" element={<FAQScreen />} />
+            <Route path="/privacy" element={<PrivacyScreen />} />
+            <Route path="/terms" element={<TermsScreen />} />
 
             {/* Admin Routes */}
             <Route element={<AdminRoute />}>
