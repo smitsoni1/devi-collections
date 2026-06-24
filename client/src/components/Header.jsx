@@ -30,7 +30,7 @@ export default function Header() {
       await logoutApi().unwrap();
       dispatch(clearCredentials());
       dispatch(clearCart());
-      navigate('/login');
+      navigate('/');
       toast.success('Logged out successfully');
     } catch (err) {
       toast.error('Logout failed');
