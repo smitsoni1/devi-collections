@@ -36,7 +36,7 @@ export default function LoginScreen() {
           <div className="w-16 h-16 rounded-2xl bg-brand-gradient mx-auto flex items-center justify-center shadow-brand-lg mb-4 animate-float">
             <span className="text-white font-display font-bold text-3xl">D</span>
           </div>
-          <h1 className="font-display text-2xl font-bold text-white mb-1">Welcome Back!</h1>
+          <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">Welcome Back!</h1>
           <p className="text-gray-500 text-sm">Sign in to your Devi Collections account</p>
         </div>
 
@@ -105,12 +105,12 @@ export default function LoginScreen() {
           </button>
 
           {/* Demo Credentials */}
-          <div className="p-3 rounded-xl bg-brand-950/50 border border-brand-800/50">
-            <p className="text-xs text-brand-300 font-medium mb-1.5">🔑 Demo Credentials</p>
+          <div className="p-3 rounded-xl bg-brand-50 border border-brand-200">
+            <p className="text-xs text-brand-700 font-medium mb-1.5">🔑 Demo Credentials</p>
             <button
               type="button"
               onClick={() => { setEmail('admin@deviCollections.com'); setPassword('admin123456'); }}
-              className="text-xs text-gray-400 hover:text-brand-300 transition-colors"
+              className="text-xs text-gray-600 hover:text-brand-700 transition-colors"
             >
               Admin: admin@deviCollections.com / admin123456
             </button>
@@ -119,7 +119,7 @@ export default function LoginScreen() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{' '}
-          <Link to="/register" className="text-brand-300 font-medium hover:text-brand-200 transition-colors">
+          <Link to="/register" className="text-brand-600 font-medium hover:text-brand-700 transition-colors">
             Create one for free →
           </Link>
         </p>

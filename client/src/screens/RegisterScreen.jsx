@@ -56,7 +56,7 @@ export default function RegisterScreen() {
           <div className="w-16 h-16 rounded-2xl bg-brand-gradient mx-auto flex items-center justify-center shadow-brand-lg mb-4 animate-float">
             <span className="text-white font-display font-bold text-3xl">D</span>
           </div>
-          <h1 className="font-display text-2xl font-bold text-white mb-1">Create Account</h1>
+          <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">Create Account</h1>
           <p className="text-gray-500 text-sm">Join thousands of happy customers</p>
         </div>
 
@@ -165,8 +165,8 @@ export default function RegisterScreen() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{' '}
-          <Link to="/login" className="text-brand-300 font-medium hover:text-brand-200 transition-colors">
-            Sign in →
+          <Link to="/login" className="text-brand-600 font-medium hover:text-brand-700 transition-colors">
+            Log in instead →
           </Link>
         </p>
       </div>

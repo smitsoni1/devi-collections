@@ -55,8 +55,8 @@ export default function ShippingScreen() {
                 onClick={() => setForm({ ...form, label: lbl })}
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${
                   form.label === lbl
-                    ? 'border-brand-500 bg-brand-950 text-brand-300'
-                    : 'border-surface-border text-gray-500 hover:border-brand-700'
+                    ? 'border-brand-500 bg-brand-50 text-brand-700'
+                    : 'border-gray-300 text-gray-500 hover:border-brand-500'
                 }`}
               >
                 <FiHome className="w-4 h-4" /> {lbl}
@@ -133,7 +133,7 @@ export default function ShippingScreen() {
           <label htmlFor="phone" className="label">Mobile Number</label>
           <div className="relative">
             <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            <div className="absolute left-11 top-1/2 -translate-y-1/2 text-gray-500 text-sm pr-3 border-r border-surface-border">+91</div>
+            <div className="absolute left-11 top-1/2 -translate-y-1/2 text-gray-500 text-sm pr-3 border-r border-gray-300">+91</div>
             <input
               id="phone" name="phone" value={form.phone}
               onChange={handleChange}

@@ -49,15 +49,15 @@ export default function MyOrdersScreen() {
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Order ID</p>
-                  <p className="font-mono text-brand-300 text-sm font-medium">#{order._id.slice(-12).toUpperCase()}</p>
+                  <p className="font-mono text-brand-700 text-sm font-medium">#{order._id.slice(-12).toUpperCase()}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Date</p>
-                  <p className="text-sm text-white">{new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                  <p className="text-sm text-gray-900">{new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Total</p>
-                  <p className="text-sm font-bold text-white">₹{order.totalPrice?.toLocaleString('en-IN')}</p>
+                  <p className="text-xs text-gray-500 mb-1">Total Amount</p>
+                  <p className="text-sm font-bold text-gray-900">₹{order.totalPrice?.toLocaleString('en-IN')}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Payment</p>
@@ -87,8 +87,8 @@ export default function MyOrdersScreen() {
                   />
                 ))}
                 {order.orderItems?.length > 4 && (
-                  <div className="w-12 h-16 rounded-lg bg-surface-elevated border border-surface-border flex items-center justify-center text-xs text-gray-500">
-                    +{order.orderItems.length - 4}
+                  <div className="w-12 h-16 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-xs text-gray-500">
+                    +{order.orderItems.length - 3}
                   </div>
                 )}
               </div>
