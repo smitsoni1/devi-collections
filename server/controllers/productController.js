@@ -208,10 +208,14 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
   // Delete images from Cloudinary
   if (product.images && product.images.length > 0) {
-    const deletePromises = product.images.map((img) =>
-      cloudinary.uploader.destroy(img.public_id)
-    );
-    await Promise.all(deletePromises);
+    try {
+      const deletePromises = product.images.map((img) =>
+        cloudinary.uploader.destroy(img.public_id)
+      );
+      await Promise.all(deletePromises);
+    } catch (error) {
+      console.error('Failed to delete images from Cloudinary:', error.message);
+    }
   }
 
   await product.deleteOne();
