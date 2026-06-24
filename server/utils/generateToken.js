@@ -13,7 +13,7 @@ const generateToken = (res, userId) => {
   res.cookie('token', token, {
     httpOnly: true,                                          // XSS protection
     secure: process.env.NODE_ENV === 'production',          // HTTPS only in prod
-    sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // allow cross-site cookies in prod
     maxAge: 30 * 24 * 60 * 60 * 1000,                      // 30 days in ms
   });
 };
