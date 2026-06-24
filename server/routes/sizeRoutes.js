@@ -5,16 +5,16 @@ import {
   updateSize,
   deleteSize,
 } from '../controllers/sizeController.js';
-import { protect, admin } from '../middleware/authMiddleware.js';
+import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.route('/')
   .get(getSizes)
-  .post(protect, admin, createSize);
+  .post(protect, adminOnly, createSize);
 
 router.route('/:id')
-  .put(protect, admin, updateSize)
-  .delete(protect, admin, deleteSize);
+  .put(protect, adminOnly, updateSize)
+  .delete(protect, adminOnly, deleteSize);
 
 export default router;
