@@ -76,7 +76,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
 
             {/* Search */}
-            <Link to="/?search=true" className="btn-ghost p-2.5 rounded-xl" aria-label="Search">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn-ghost p-2.5 rounded-xl" aria-label="Search">
               <FiSearch className="w-5 h-5" />
             </Link>
 
