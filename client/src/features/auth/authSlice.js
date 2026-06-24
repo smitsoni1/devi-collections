@@ -64,6 +64,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
+
+    syncCart: builder.mutation({
+      query: (data) => ({
+        url: '/auth/cart',
+        method: 'PUT',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -73,4 +81,5 @@ export const {
   useLogoutMutation,
   useGetProfileQuery,
   useUpdateProfileMutation,
+  useSyncCartMutation,
 } = authApiSlice;

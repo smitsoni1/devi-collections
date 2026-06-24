@@ -63,6 +63,7 @@ export const loginUser = asyncHandler(async (req, res) => {
         roles: user.roles,
         isAdmin: user.isAdmin,
         avatar: user.avatar,
+        cart: user.cart,
       },
     });
   } else {
@@ -101,6 +102,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
         isAdmin: user.isAdmin,
         addresses: user.addresses,
         avatar: user.avatar,
+        cart: user.cart,
         createdAt: user.createdAt,
       },
     });
@@ -147,4 +149,20 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
       addresses: updated.addresses,
     },
   });
+});
+// ─── @desc  Sync user cart
+// ─── @route PUT /api/auth/cart
+// ─── @access Private
+export const syncUserCart = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  user.cart = req.body.cartItems || [];
+  await user.save();
+
+  res.json({ success: true, message: 'Cart synchronized' });
 });

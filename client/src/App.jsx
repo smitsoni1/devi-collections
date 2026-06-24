@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useSyncCartMutation } from './features/auth/authSlice';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { PrivateRoute, AdminRoute } from './components/PrivateRoute';
@@ -27,6 +29,16 @@ const OrderListScreen = lazy(() => import('./screens/admin/OrderListScreen'));
 const UserListScreen = lazy(() => import('./screens/admin/UserListScreen'));
 
 export default function App() {
+  const { cartItems } = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.auth);
+  const [syncCart] = useSyncCartMutation();
+
+  useEffect(() => {
+    if (userInfo) {
+      syncCart({ cartItems });
+    }
+  }, [cartItems, userInfo, syncCart]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />

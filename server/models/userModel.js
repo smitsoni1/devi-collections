@@ -44,6 +44,16 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    cart: [
+      {
+        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+        name: { type: String, required: true },
+        image: { type: String, required: true },
+        price: { type: Number, required: true },
+        size: { type: String, required: true },
+        qty: { type: Number, required: true },
+      }
+    ],
   },
   { timestamps: true }
 );

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useLoginMutation } from '../features/auth/authSlice';
 import { setCredentials } from '../features/auth/authSlice';
+import { setCartItems } from '../features/cart/cartSlice';
 import { toast } from 'react-toastify';
 
 export default function LoginScreen() {
@@ -20,6 +21,9 @@ export default function LoginScreen() {
     try {
       const result = await login({ email, password }).unwrap();
       dispatch(setCredentials(result.user));
+      if (result.user.cart && result.user.cart.length > 0) {
+        dispatch(setCartItems(result.user.cart));
+      }
       if (result.user.isAdmin) {
         navigate('/admin/dashboard');
       } else {
