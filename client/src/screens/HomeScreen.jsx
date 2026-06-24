@@ -4,6 +4,7 @@ import { FiSearch, FiFilter, FiX, FiChevronDown } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
 import { SkeletonGrid } from '../components/Loader';
 import Message from '../components/Message';
+import ProductSlider from '../components/ProductSlider';
 import { useGetProductsQuery } from '../features/products/productsApiSlice';
 import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
 import { useGetSizesQuery } from '../features/sizes/sizesApiSlice';
@@ -29,6 +30,8 @@ export default function HomeScreen() {
   const [page, setPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
 
+  const isHomeView = !category && !search;
+
   const queryParams = {
     page,
     pageSize: 12,
@@ -40,6 +43,7 @@ export default function HomeScreen() {
     ...(size && { size }),
     ...(fabric && { fabric }),
     ...(rating && { rating }),
+    ...(isHomeView && { isFeatured: true }),
   };
 
   const { data, isLoading, isFetching, isError, error } = useGetProductsQuery(queryParams);
@@ -91,32 +95,37 @@ export default function HomeScreen() {
 
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
-      {/* ── Hero Banner ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200 py-12 px-4 mb-6">
-        <div className="container-max text-center">
-          <h1 className="page-title text-3xl md:text-5xl mb-4 text-[#111111]">
-            Discover Premium <span className="text-brand-600">Indian Fashion</span>
-          </h1>
-          
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center max-w-2xl mx-auto gap-3 mt-8"
-          >
-            <div className="flex-1 flex items-center gap-3 input bg-white border border-gray-300 rounded-xl px-4 py-3">
-              <FiSearch className="w-5 h-5 text-gray-400 flex-shrink-0" />
-              <input
-                name="search"
-                defaultValue={search}
-                placeholder="Search Kurtis, Sarees, Lehengas..."
-                className="bg-transparent outline-none w-full text-gray-900 placeholder-gray-500"
-              />
-            </div>
-            <button type="submit" className="btn-primary px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white flex-shrink-0 shadow-none">
-              Search
-            </button>
-          </form>
-        </div>
-      </section>
+      {isHomeView ? (
+        <section className="container-max px-4 pt-8">
+          <ProductSlider />
+        </section>
+      ) : (
+        <section className="bg-white border-b border-gray-200 py-12 px-4 mb-6">
+          <div className="container-max text-center">
+            <h1 className="page-title text-3xl md:text-5xl mb-4 text-[#111111]">
+              Shop <span className="text-brand-600">{category || 'All Products'}</span>
+            </h1>
+            
+            <form
+              onSubmit={handleSearch}
+              className="flex items-center max-w-2xl mx-auto gap-3 mt-8"
+            >
+              <div className="flex-1 flex items-center gap-3 input bg-white border border-gray-300 rounded-xl px-4 py-3">
+                <FiSearch className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                <input
+                  name="search"
+                  defaultValue={search}
+                  placeholder="Search Kurtis, Sarees, Lehengas..."
+                  className="bg-transparent outline-none w-full text-gray-900 placeholder-gray-500"
+                />
+              </div>
+              <button type="submit" className="btn-primary px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white flex-shrink-0 shadow-none">
+                Search
+              </button>
+            </form>
+          </div>
+        </section>
+      )}
 
       {/* ── Shop Section with Sidebar ───────────────────────────────────── */}
       <section className="container-max px-4 pb-16 flex flex-col md:flex-row gap-8">

@@ -4,6 +4,7 @@ import { FiPlus, FiEdit2, FiTrash2, FiSearch, FiAlertTriangle } from 'react-icon
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
+  useUpdateProductMutation,
 } from '../../features/products/productsApiSlice';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
@@ -14,6 +15,19 @@ export default function ProductListScreen() {
   const [search, setSearch] = useState('');
   const { data, isLoading, isError } = useGetProductsQuery({ page, pageSize: 15, search });
   const [deleteProduct, { isLoading: deleting }] = useDeleteProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
+
+  const handleToggleFeatured = async (product) => {
+    try {
+      await updateProduct({
+        id: product._id,
+        formData: { isFeatured: !product.isFeatured },
+        isFeaturedToggle: !product.isFeatured // Pass for optimistic update
+      }).unwrap();
+    } catch {
+      toast.error('Failed to update featured status');
+    }
+  };
 
   const handleDelete = async (id, name) => {
     if (!window.confirm(`Delete "${name}"? This will also remove images from Cloudinary.`)) return;
@@ -58,6 +72,7 @@ export default function ProductListScreen() {
                     <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">Category</th>
                     <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">Price</th>
                     <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">Stock</th>
+                    <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">On Home Page</th>
                     <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">Rating</th>
                     <th className="text-left px-4 py-3 text-xs text-gray-500 font-medium">Actions</th>
                   </tr>
@@ -97,6 +112,17 @@ export default function ProductListScreen() {
                             {product.countInStock}
                           </span>
                         </div>
+                      </td>
+                      <td className="px-4 py-3">
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            className="sr-only peer"
+                            checked={product.isFeatured}
+                            onChange={() => handleToggleFeatured(product)}
+                          />
+                          <div className="w-9 h-5 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-500"></div>
+                        </label>
                       </td>
                       <td className="px-4 py-3">
                         <p className="text-gray-900 text-sm">{product.rating?.toFixed(1)} ⭐ ({product.numReviews})</p>

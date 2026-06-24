@@ -63,6 +63,10 @@ export const getProducts = asyncHandler(async (req, res) => {
     filter.rating = { $gte: Number(req.query.rating) };
   }
 
+  if (req.query.isFeatured === 'true') {
+    filter.isFeatured = true;
+  }
+
   // Build sort
   const sortMap = {
     newest: { createdAt: -1 },
