@@ -11,7 +11,10 @@ export default function RegisterScreen() {
   const navigate = useNavigate();
   const [register, { isLoading }] = useRegisterMutation();
 
-  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const passwordStrength = (pwd) => {
@@ -21,7 +24,7 @@ export default function RegisterScreen() {
     return 'strong';
   };
 
-  const strength = passwordStrength(form.password);
+  const strength = passwordStrength(password);
   const strengthConfig = {
     weak: { color: 'bg-red-500', label: 'Weak', width: '33%' },
     medium: { color: 'bg-amber-500', label: 'Medium', width: '66%' },
@@ -30,27 +33,28 @@ export default function RegisterScreen() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.password !== form.confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-    if (form.password.length < 6) {
+    if (password.length < 6) {
       toast.error('Password must be at least 6 characters');
       return;
     }
     try {
-      const result = await register({ name: form.name, email: form.email, password: form.password }).unwrap();
+      const result = await register({ name, email, password }).unwrap();
       dispatch(setCredentials(result.user));
-      navigate('/');
+      navigate(redirect);
       toast.success(`Welcome to Devi Collections, ${result.user.name.split(' ')[0]}! 🎉`);
     } catch (err) {
-      toast.error(err?.data?.message || 'Registration failed');
+      toast.error(err?.data?.message || 'Registration failed. Please try again.');
     }
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md animate-scale-in">
+        <Breadcrumb pageName="Create Account" />
 
         <div className="text-center mb-8">
           <div className="w-16 h-16 rounded-2xl bg-brand-gradient mx-auto flex items-center justify-center shadow-brand-lg mb-4 animate-float">

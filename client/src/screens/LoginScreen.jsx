@@ -5,6 +5,7 @@ import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useLoginMutation } from '../features/auth/authSlice';
 import { setCredentials } from '../features/auth/authSlice';
 import { setCartItems } from '../features/cart/cartSlice';
+import Breadcrumb from '../components/Breadcrumb';
 import { toast } from 'react-toastify';
 
 export default function LoginScreen() {
@@ -39,8 +40,9 @@ export default function LoginScreen() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md animate-scale-in">
+        <Breadcrumb pageName="Sign In" />
 
         {/* Logo */}
         <div className="text-center mb-8">

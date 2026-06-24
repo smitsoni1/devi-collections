@@ -6,6 +6,7 @@ import { useGetUserProfileQuery, useUpdateUserProfileMutation } from '../feature
 import { setCredentials } from '../features/auth/authSlice';
 import { PageLoader } from '../components/Loader';
 import Message from '../components/Message';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function ProfileScreen() {
   const [name, setName] = useState('');
@@ -55,6 +56,7 @@ export default function ProfileScreen() {
   return (
     <div className="section container-max">
       <div className="max-w-xl mx-auto">
+        <Breadcrumb pageName="My Profile" />
         <h1 className="page-title mb-8">My Profile</h1>
 
         <div className="card p-6 md:p-8">

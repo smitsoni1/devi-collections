@@ -1,7 +1,10 @@
+import Breadcrumb from '../../components/Breadcrumb';
+
 export default function SizeGuideScreen() {
   return (
     <div className="container-max px-4 py-12 md:py-20 min-h-[60vh]">
       <div className="max-w-4xl mx-auto">
+        <Breadcrumb pageName="Size Guide" />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Size Guide</h1>
         <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
           Find your perfect fit with our easy-to-use measurement guide. All measurements are in inches.

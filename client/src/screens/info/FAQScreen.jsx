@@ -1,3 +1,5 @@
+import Breadcrumb from '../../components/Breadcrumb';
+
 export default function FAQScreen() {
   const faqs = [
     { q: "How long does delivery take?", a: "Most orders are delivered within 3-5 business days across India." },
@@ -10,6 +12,7 @@ export default function FAQScreen() {
   return (
     <div className="container-max px-4 py-12 md:py-20 min-h-[60vh]">
       <div className="max-w-3xl mx-auto">
+        <Breadcrumb pageName="FAQ" />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h1>
         <div className="space-y-4">
           {faqs.map((faq, index) => (

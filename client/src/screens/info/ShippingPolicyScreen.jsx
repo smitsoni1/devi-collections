@@ -1,7 +1,10 @@
+import Breadcrumb from '../../components/Breadcrumb';
+
 export default function ShippingPolicyScreen() {
   return (
     <div className="container-max px-4 py-12 md:py-20 min-h-[60vh]">
       <div className="max-w-3xl mx-auto">
+        <Breadcrumb pageName="Shipping Policy" />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Shipping Policy</h1>
         <div className="prose prose-brand max-w-none text-gray-600 space-y-4">
           <p className="text-lg font-medium text-gray-800">We strive to deliver your ethnic wear as quickly and safely as possible.</p>

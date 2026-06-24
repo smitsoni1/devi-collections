@@ -3,6 +3,7 @@ import { FiPackage, FiChevronRight, FiShoppingBag } from 'react-icons/fi';
 import { useGetMyOrdersQuery } from '../features/orders/ordersApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Breadcrumb from '../components/Breadcrumb';
 
 const statusColor = {
   pending: 'badge-warning',
@@ -22,6 +23,7 @@ export default function MyOrdersScreen() {
 
   return (
     <div className="container-max px-4 py-8">
+      <Breadcrumb pageName="My Orders" />
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center">
           <FiPackage className="w-5 h-5 text-brand-400" />

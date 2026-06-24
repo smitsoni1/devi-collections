@@ -7,6 +7,7 @@ import {
   selectCartItems,
   selectCartTotal,
 } from '../features/cart/cartSlice';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function CartScreen() {
   const dispatch = useDispatch();

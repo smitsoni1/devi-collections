@@ -10,6 +10,7 @@ import { addToCart } from '../features/cart/cartSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { toast } from 'react-toastify';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function ProductScreen() {
   const { id } = useParams();
@@ -91,10 +92,10 @@ export default function ProductScreen() {
   return (
     <div className="container-max px-4 py-8">
 
-      {/* Back */}
-      <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-brand-600 hover:text-brand-800 transition-colors mb-6 font-medium text-sm">
-        <FiChevronLeft className="w-4 h-4" /> Back to Shop
-      </button>
+      {/* Breadcrumb */}
+      <div className="mb-6">
+        <Breadcrumb pageName={name} />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
