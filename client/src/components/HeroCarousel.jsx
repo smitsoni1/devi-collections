@@ -5,7 +5,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 const SLIDES = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1617261622345-422830f3c5f2?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/festive/1920/1080',
     title: 'The Festive Collection',
     subtitle: 'Celebrate in Style',
     desc: 'Discover our premium range of handpicked ethnic wear.',
@@ -15,7 +15,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1583391733958-d25e07fac04f?q=80&w=1974&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/kurti/1920/1080',
     title: 'Designer Kurtis',
     subtitle: 'Comfort Meets Elegance',
     desc: 'Perfect for daily wear and office wear.',
@@ -25,7 +25,7 @@ const SLIDES = [
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=2072&auto=format&fit=crop',
+    image: 'https://picsum.photos/seed/wedding/1920/1080',
     title: 'Wedding Specials',
     subtitle: 'Be the Center of Attention',
     desc: 'Exclusive Lehengas and Gowns for the wedding season.',

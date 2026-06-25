@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { FiSearch, FiFilter, FiX, FiChevronDown, FiChevronLeft, FiChevronRight, FiTruck, FiRefreshCw, FiShield } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
-import { SkeletonGrid } from '../components/Loader';
-import Message from '../components/Message';
 import CategorySlider from '../components/CategorySlider';
+import ProductSlider from '../components/ProductSlider';
 import HeroCarousel from '../components/HeroCarousel';
 import PromoBanners from '../components/PromoBanners';
 import { useGetProductsQuery } from '../features/products/productsApiSlice';
 import { useGetCategoriesQuery } from '../features/categories/categoriesApiSlice';
 import { useGetSizesQuery } from '../features/sizes/sizesApiSlice';
+import { FiTruck, FiRefreshCw, FiShield, FiChevronLeft, FiChevronRight, FiSearch, FiFilter, FiX, FiChevronDown } from 'react-icons/fi';
 
 const FABRICS = ['Cotton', 'Silk', 'Georgette', 'Chiffon', 'Crepe', 'Rayon'];
 const SORT_OPTIONS = [
@@ -110,32 +110,23 @@ export default function HomeScreen() {
           {/* Promotional Banners */}
           <PromoBanners />
 
-          {/* Trending Products (Featured) */}
+          {/* Trending Products (Featured) as a Slider */}
           <section className="my-16">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-3xl font-display font-bold text-gray-900 mb-2">Trending Now</h2>
                 <p className="text-gray-500">Handpicked premium collection just for you</p>
               </div>
-              <Link to="/?sort=top-rated" className="hidden sm:inline-flex text-brand-600 font-semibold hover:text-brand-700 transition-colors">
+              {/* Changed ?sort=top-rated to /?sort=newest to trigger shop view proper */}
+              <Link to="/?sort=newest" className="hidden sm:inline-flex text-brand-600 font-semibold hover:text-brand-700 transition-colors">
                 View All →
               </Link>
             </div>
 
-            {isLoading || isFetching ? (
-              <SkeletonGrid count={8} />
-            ) : isError ? (
-              <Message variant="danger">{error?.data?.message || 'Failed to load products'}</Message>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                {data?.products?.map((product) => (
-                  <ProductCard key={product._id} product={product} />
-                ))}
-              </div>
-            )}
+            <ProductSlider />
             
             <div className="mt-8 text-center sm:hidden">
-              <Link to="/?sort=top-rated" className="btn-secondary inline-block">
+              <Link to="/?sort=newest" className="btn-secondary inline-block">
                 View All Products
               </Link>
             </div>

@@ -6,7 +6,7 @@ export default function PromoBanners() {
       {/* Banner 1 */}
       <Link to="/?category=Sarees" className="group relative h-80 rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-xl transition-shadow">
         <img 
-          src="https://images.unsplash.com/photo-1583391733958-d25e07fac04f?q=80&w=1974&auto=format&fit=crop" 
+          src="https://picsum.photos/seed/promo1/800/800" 
           alt="Sarees Collection"
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
@@ -21,7 +21,7 @@ export default function PromoBanners() {
       {/* Banner 2 */}
       <Link to="/?category=Kurtis" className="group relative h-80 rounded-2xl overflow-hidden bg-gray-900 shadow-sm hover:shadow-xl transition-shadow">
         <img 
-          src="https://images.unsplash.com/photo-1617261622345-422830f3c5f2?q=80&w=2070&auto=format&fit=crop" 
+          src="https://picsum.photos/seed/promo2/800/800" 
           alt="Kurtis Collection"
           className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
         />
