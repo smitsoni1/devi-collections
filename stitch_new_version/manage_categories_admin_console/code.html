@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devi Admin - Manage Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for enterprise feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c5c7c8; }
+        ::-webkit-scrollbar-thumb:hover { background: #5d5f5f; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "secondary": "#5c5f60",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-dim": "#ddd9d9",
+                        "tertiary-container": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "surface-tint": "#5d5f5f",
+                        "surface-bright": "#fcf8f8",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "inverse-primary": "#c6c6c7",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626566",
+                        "on-primary-fixed-variant": "#454747",
+                        "background": "#fcf8f8",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-primary-container": "#747676",
+                        "surface-container-high": "#ebe7e7",
+                        "on-background": "#1c1b1b",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "secondary-container": "#e1e3e4",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-tertiary-container": "#747676",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1b1b",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary-container": "#ffffff",
+                        "on-secondary-fixed": "#191c1d",
+                        "secondary-fixed": "#e1e3e4",
+                        "on-secondary-fixed-variant": "#454748",
+                        "surface-container": "#f1edec",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf8f8",
+                        "outline-variant": "#c4c7c8",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#747878",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary": "#1A365D", /* Adjusted to requested Brand Accent */
+                        "tertiary": "#5d5f5f",
+                        "inverse-surface": "#313030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px", /* Strict 0px radius for luxury/enterprise feel */
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "xxl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg z-40">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Admin Console</h1>
+<p class="text-secondary font-label-sm">Enterprise Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<!-- Active State: Products (Closest to Categories) -->
+<a class="flex items-center px-lg py-md border-l-[3px] border-primary bg-secondary-container text-on-secondary-container font-semibold transition-all" href="#">
+<span class="material-symbols-outlined mr-md text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Products</span>
+</a>
+<a class="flex items-center px-lg py-md text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md">Orders</span>
+</a>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant">
+<div class="flex items-center space-x-md">
+<div class="w-10 h-10 bg-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Admin Profile</p>
+<p class="text-[10px] uppercase tracking-widest text-secondary">Superuser</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[280px] p-xl bg-surface">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-xxl">
+<div>
+<nav class="flex mb-sm space-x-2 text-secondary font-label-sm uppercase tracking-tighter">
+<span class="hover:text-primary cursor-pointer">Inventory</span>
+<span>/</span>
+<span class="text-on-surface">Categories</span>
+</nav>
+<h2 class="font-display-md text-display-md font-bold tracking-tight text-on-background">Categories</h2>
+</div>
+<button class="bg-[#1A365D] text-white px-lg h-12 font-label-md flex items-center space-x-sm hover:bg-black transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>ADD CATEGORY</span>
+</button>
+</header>
+<!-- Stats Row (Enterprise Metric Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+<div class="p-lg border border-outline-variant bg-white">
+<p class="text-secondary font-label-sm uppercase mb-sm">Total Categories</p>
+<p class="font-display-md text-display-md text-on-background">24</p>
+</div>
+<div class="p-lg border border-outline-variant bg-white">
+<p class="text-secondary font-label-sm uppercase mb-sm">Active SKU Items</p>
+<p class="font-display-md text-display-md text-on-background">1,842</p>
+</div>
+<div class="p-lg border border-outline-variant bg-white">
+<p class="text-secondary font-label-sm uppercase mb-sm">New This Month</p>
+<p class="font-display-md text-display-md text-primary">+3</p>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="border border-outline-variant bg-white">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center border border-outline-variant bg-white px-sm py-xs w-64 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-secondary text-sm mr-xs" data-icon="search">search</span>
+<input class="border-none focus:ring-0 text-body-md w-full p-0 h-8" placeholder="Search categories..." type="text"/>
+</div>
+<div class="flex space-x-md">
+<button class="text-secondary hover:text-on-surface"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+<button class="text-secondary hover:text-on-surface"><span class="material-symbols-outlined" data-icon="download">download</span></button>
+</div>
+</div>
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Category Name</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Slug</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Product Count</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-headline-md text-on-surface">Kurtis</td>
+<td class="px-lg py-lg font-mono-sm text-secondary">/shop/kurtis</td>
+<td class="px-lg py-lg font-body-md text-on-surface">412 Products</td>
+<td class="px-lg py-lg">
+<span class="font-label-sm text-primary uppercase">Published</span>
+</td>
+<td class="px-lg py-lg text-right space-x-md">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-headline-md text-on-surface">Sarees</td>
+<td class="px-lg py-lg font-mono-sm text-secondary">/shop/sarees</td>
+<td class="px-lg py-lg font-body-md text-on-surface">856 Products</td>
+<td class="px-lg py-lg">
+<span class="font-label-sm text-primary uppercase">Published</span>
+</td>
+<td class="px-lg py-lg text-right space-x-md">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-headline-md text-on-surface">Lehengas</td>
+<td class="px-lg py-lg font-mono-sm text-secondary">/shop/lehengas</td>
+<td class="px-lg py-lg font-body-md text-on-surface">192 Products</td>
+<td class="px-lg py-lg">
+<span class="font-label-sm text-primary uppercase">Published</span>
+</td>
+<td class="px-lg py-lg text-right space-x-md">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-headline-md text-on-surface">New Arrivals</td>
+<td class="px-lg py-lg font-mono-sm text-secondary">/shop/new-arrivals</td>
+<td class="px-lg py-lg font-body-md text-on-surface">45 Products</td>
+<td class="px-lg py-lg">
+<span class="font-label-sm text-secondary-fixed-dim uppercase">Draft</span>
+</td>
+<td class="px-lg py-lg text-right space-x-md">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-headline-md text-on-surface">Accessories</td>
+<td class="px-lg py-lg font-mono-sm text-secondary">/shop/accessories</td>
+<td class="px-lg py-lg font-body-md text-on-surface">328 Products</td>
+<td class="px-lg py-lg">
+<span class="font-label-sm text-primary uppercase">Published</span>
+</td>
+<td class="px-lg py-lg text-right space-x-md">
+<button class="text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<footer class="p-lg bg-surface-container-low flex justify-between items-center">
+<p class="font-label-sm text-secondary">Showing 1 to 5 of 24 categories</p>
+<div class="flex space-x-xs">
+<button class="px-md py-xs border border-outline-variant text-secondary hover:bg-white hover:text-on-surface">Previous</button>
+<button class="px-md py-xs border border-primary bg-primary text-white">1</button>
+<button class="px-md py-xs border border-outline-variant text-secondary hover:bg-white hover:text-on-surface">2</button>
+<button class="px-md py-xs border border-outline-variant text-secondary hover:bg-white hover:text-on-surface">3</button>
+<button class="px-md py-xs border border-outline-variant text-secondary hover:bg-white hover:text-on-surface">Next</button>
+</div>
+</footer>
+</div>
+<!-- Quick Insight Section (Bento Style) -->
+<div class="mt-xxl grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="border border-outline-variant p-xl flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-md">Category Distribution</h3>
+<p class="text-secondary font-body-md mb-lg">Visual representation of product allocation across your ethnic wear departments.</p>
+</div>
+<div class="h-48 w-full bg-surface-container-high flex items-end px-lg space-x-md">
+<div class="w-full bg-[#1A365D]" style="height: 60%"></div>
+<div class="w-full bg-[#1A365D]" style="height: 90%"></div>
+<div class="w-full bg-[#1A365D]" style="height: 40%"></div>
+<div class="w-full bg-outline-variant" style="height: 15%"></div>
+<div class="w-full bg-[#1A365D]" style="height: 70%"></div>
+</div>
+</div>
+<div class="border border-outline-variant p-xl relative overflow-hidden flex flex-col">
+<h3 class="font-headline-md text-headline-md mb-md">Asset Spotlight</h3>
+<p class="text-secondary font-body-md mb-lg">Curate the hero imagery for your category landing pages here.</p>
+<div class="flex-1 min-h-[160px] relative">
+<img class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 cursor-crosshair" data-alt="High-end fashion editorial photography showing a rack of exquisite hand-embroidered Kurtis in a minimalist studio. The lighting is soft and neutral, highlighting silk textures. The color palette is composed of soft ivory, deep navy, and metallic gold accents. Minimalist and corporate aesthetic consistent with luxury brand aggregators." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBErEk0SdZ_AbE57gfUil3YeEVCyzLnK-lMBy-5ZVV0tO81BNm9OYPrDhhxb5unDQ4TMoBmQ6kcS4_iYZ1oczqFhtXN7XOnt8izqrkl9oG3VJQUMdjr__IzmDQl0uShsPsJTTApdzQWcGW4BcCRHjFOfls181QmDcbr3GnmbrwxuOsMS0bI7EeqYvQUt3P2rvjFJaJqrQUBitmp-skUvRjhlzYKu4Pv9sEa32Uz4gvPfwisbYV286PlYRkGxYS1ZILztYHwM0L9uShT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<span class="text-white font-label-md uppercase">Featured: Kurtis 2024 Collection</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction script -->
+<script>
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (!e.target.closest('button')) {
+                    console.log('Row clicked, navigating to details...');
+                }
+            });
+        });
+    </script>
+</body></html>

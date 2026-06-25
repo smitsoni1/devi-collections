@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | DEVI Ethnic Wear</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f6f3f2",
+                    "on-secondary-container": "#626566",
+                    "inverse-primary": "#c6c6c7",
+                    "surface-container-high": "#ebe7e7",
+                    "surface-container": "#f1edec",
+                    "on-surface-variant": "#444748",
+                    "primary-container": "#ffffff",
+                    "on-secondary-fixed-variant": "#454748",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf8f8",
+                    "surface": "#fcf8f8",
+                    "tertiary": "#5d5f5f",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-container": "#747676",
+                    "on-primary-fixed-variant": "#454747",
+                    "inverse-surface": "#313030",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#e1e3e4",
+                    "primary-fixed": "#e2e2e2",
+                    "tertiary-fixed": "#e2e2e2",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary": "#1A365D",
+                    "on-secondary-fixed": "#191c1d",
+                    "surface-bright": "#fcf8f8",
+                    "tertiary-container": "#ffffff",
+                    "on-primary-fixed": "#1a1c1c",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "error": "#ba1a1a",
+                    "outline": "#747878",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface-container-highest": "#e5e2e1",
+                    "outline-variant": "#c4c7c8",
+                    "secondary-fixed": "#e1e3e4",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-primary-container": "#747676",
+                    "surface-dim": "#ddd9d9",
+                    "secondary": "#5c5f60",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#5d5f5f",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#c5c7c8",
+                    "navy-corporate": "#1A365D"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "margin-desktop": "64px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "xxl": "80px",
+                    "base": "4px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "xl": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .checkout-step-active { border-color: #1A365D; }
+        input:focus { outline: none; border-color: #1A365D !important; ring: 0 !important; }
+        .out-of-stock { position: relative; text-decoration: line-through; color: #9ca3af; }
+    </style>
+</head>
+<body class="text-on-background bg-surface">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop bg-surface h-xxl border-b border-outline-variant">
+<div class="flex items-center gap-xl">
+<h1 class="font-display-md text-display-md font-bold tracking-tighter text-on-background">DEVI</h1>
+<nav class="hidden md:flex gap-lg">
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Kurtis</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Sarees</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Lehengas</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">New Arrivals</a>
+</nav>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined cursor-pointer text-on-background">person</span>
+<div class="relative cursor-pointer">
+<span class="material-symbols-outlined text-on-background">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-navy-corporate text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">1</span>
+</div>
+</div>
+</header>
+<main class="mt-xxl pt-xl pb-xl px-margin-desktop max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start">
+<!-- Left Column: Checkout Steps -->
+<div class="lg:col-span-7 space-y-lg">
+<h2 class="font-display-md text-display-md font-bold text-on-background mb-xl">Checkout</h2>
+<!-- Step 1: Shipping Address (Active) -->
+<section class="border border-outline-variant p-lg checkout-step-active bg-white">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-md">
+<span class="w-8 h-8 bg-navy-corporate text-white flex items-center justify-center font-bold">1</span>
+<h3 class="font-headline-md text-headline-md uppercase tracking-wide">Shipping Address</h3>
+</div>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="md:col-span-2">
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">Full Name</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="e.g. Ananya Sharma" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">Street Address</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="Apartment, suite, unit, etc." type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">City</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="Mumbai" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">State / Province</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="Maharashtra" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">ZIP / Postal Code</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="400001" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase text-secondary mb-xs">Phone Number</label>
+<input class="w-full border border-outline-variant p-md font-body-md text-body-md focus:border-navy-corporate transition-all" placeholder="+91 98765 43210" type="tel"/>
+</div>
+<div class="md:col-span-2 pt-md">
+<button class="bg-navy-corporate text-white font-label-md text-label-md uppercase tracking-widest py-md px-xl hover:bg-black transition-all" type="button">
+                                Deliver to this address
+                            </button>
+</div>
+</form>
+</section>
+<!-- Step 2: Order Summary (Collapsed) -->
+<section class="border border-outline-variant p-lg opacity-60 hover:opacity-100 transition-opacity bg-white">
+<div class="flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="w-8 h-8 border border-outline text-on-background flex items-center justify-center font-bold">2</span>
+<h3 class="font-headline-md text-headline-md uppercase tracking-wide">Review Items</h3>
+</div>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</section>
+<!-- Step 3: Payment (Collapsed) -->
+<section class="border border-outline-variant p-lg opacity-60 hover:opacity-100 transition-opacity bg-white">
+<div class="flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-md">
+<span class="w-8 h-8 border border-outline text-on-background flex items-center justify-center font-bold">3</span>
+<h3 class="font-headline-md text-headline-md uppercase tracking-wide">Payment Options</h3>
+</div>
+<span class="material-symbols-outlined">lock</span>
+</div>
+</section>
+</div>
+<!-- Right Column: Sticky Order Summary -->
+<aside class="lg:col-span-5 lg:sticky lg:top-[120px] space-y-lg">
+<div class="border border-outline-variant bg-white p-lg">
+<h3 class="font-headline-md text-headline-md uppercase tracking-widest border-b border-outline-variant pb-md mb-lg">Order Summary</h3>
+<!-- Product Item -->
+<div class="flex gap-md pb-lg border-b border-outline-variant">
+<div class="w-24 h-32 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A luxurious high-end Banarasi Silk Saree in a rich crimson hue, featuring intricate gold zari borders and detailed floral patterns. The fabric is draped elegantly on a mannequin in a minimalist high-contrast photography studio with soft lighting. The overall aesthetic is elite, traditional, and sophisticated, reflecting high-quality ethnic craftsmanship for a luxury fashion brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnxJOcBEJClpMEiRmFb0EiklgSuwOEhETgghXqt7IvWr8NLxHRhKLQrLEuZ-wjUr2Uf1F6WjA5yEz0UOMnCWbwu8-ZJOJeMmzlPl-kAi1ozCqs10icC5Ve9p8BNJzQjTXACHRTKjB7aFtDirxHuITNLmT_N5I2nyZRwUGNjowZgh8b-4ol-QE5armvy6vIdXK0A1KTovG6FKyXCEbKAWlIFi8BV1Srk4qav5P7jTiEmXzeO0n-9WL9Rye-Qx8if6vV1atTCta7xJoG"/>
+</div>
+<div class="flex flex-col justify-between py-xs">
+<div>
+<h4 class="font-label-md text-label-md text-on-background uppercase">Banarasi Silk Saree</h4>
+<p class="font-body-md text-body-md text-secondary mt-xs">Deep Crimson / Pure Silk</p>
+<p class="font-body-md text-body-md text-secondary">Size: Universal</p>
+</div>
+<p class="font-label-md text-label-md text-on-background">₹42,500.00</p>
+</div>
+</div>
+<!-- Pricing Breakdown -->
+<div class="py-lg space-y-sm">
+<div class="flex justify-between font-body-md text-body-md text-secondary">
+<span>Subtotal</span>
+<span>₹42,500.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-secondary">
+<span>Estimated GST (12%)</span>
+<span>₹5,100.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-secondary">
+<span>Shipping</span>
+<span class="text-on-background font-medium uppercase text-label-sm">Free</span>
+</div>
+</div>
+<!-- Coupon Code Section -->
+<div class="pb-lg border-b border-outline-variant">
+<h4 class="font-label-sm text-label-sm uppercase text-secondary mb-sm">Coupon Code</h4>
+<div class="flex gap-sm">
+<input class="flex-grow border border-outline-variant p-sm font-label-sm text-label-sm focus:border-navy-corporate" placeholder="Enter Coupon Code" type="text"/>
+<button class="px-md py-sm border border-navy-corporate text-navy-corporate font-label-sm text-label-sm hover:bg-navy-corporate hover:text-white transition-all uppercase">Apply</button>
+</div>
+<div class="mt-xs hidden" id="coupon-message">
+<p class="font-label-sm text-[10px] uppercase tracking-wide" id="coupon-message-text"></p>
+</div>
+</div>
+<!-- Total -->
+<div class="py-lg flex justify-between items-end">
+<div>
+<p class="font-label-sm text-label-sm uppercase text-secondary">Total Amount</p>
+<p class="font-display-md text-display-md font-bold text-on-background">₹47,600.00</p>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-navy-corporate text-white font-label-md text-label-md uppercase tracking-[0.2em] py-xl hover:bg-black transition-all flex items-center justify-center gap-md">
+<span>Place Order</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-[10px] text-secondary uppercase mt-md tracking-tighter">
+                        Secure checkout powered by Enterprise Systems
+                    </p>
+</div>
+<!-- Trusted Badges -->
+<div class="grid grid-cols-3 gap-md text-center py-md">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<span class="font-label-sm text-[10px] text-secondary uppercase">Secure</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">local_shipping</span>
+<span class="font-label-sm text-[10px] text-secondary uppercase">Express</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">published_with_changes</span>
+<span class="font-label-sm text-[10px] text-secondary uppercase">Returns</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between border-t border-outline-variant bg-surface-container-highest mt-xl">
+<div class="mb-lg md:mb-0">
+<h1 class="font-display-md text-display-md font-bold text-on-background mb-sm">DEVI</h1>
+<p class="font-label-sm text-label-sm text-secondary uppercase">Authentic Ethnic Wear Since 1994</p>
+</div>
+<div class="flex flex-wrap gap-xl">
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md font-bold uppercase text-on-background">Explore</h4>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background underline-offset-4 hover:underline" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background underline-offset-4 hover:underline" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md font-bold uppercase text-on-background">Support</h4>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background underline-offset-4 hover:underline" href="#">Shipping Policy</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background underline-offset-4 hover:underline" href="#">Contact</a>
+</div>
+</div>
+<div class="mt-xl md:mt-0 flex flex-col justify-end items-start md:items-end">
+<p class="font-label-sm text-label-sm text-secondary">© 2024 Devi Collections. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for form fields
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.add('text-navy-corporate');
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.remove('text-navy-corporate');
+            });
+        });
+
+        // Basic toggle logic for collapsed sections (Simulated)
+        const collapsedSections = document.querySelectorAll('section.opacity-60');
+        collapsedSections.forEach(section => {
+            section.addEventListener('click', () => {
+                alert('Please complete the shipping information first to unlock this step.');
+            });
+        });
+
+        // Coupon Logic Simulation
+        const couponBtn = document.querySelector('button.border-navy-corporate');
+        const couponInput = document.querySelector('input[placeholder="Enter Coupon Code"]');
+        const messageContainer = document.getElementById('coupon-message');
+        const messageText = document.getElementById('coupon-message-text');
+
+        if (couponBtn) {
+            couponBtn.addEventListener('click', () => {
+                const val = couponInput.value.trim().toUpperCase();
+                messageContainer.classList.remove('hidden');
+                if (val === 'DEVI10') {
+                    messageText.innerText = 'Success! 10% discount applied.';
+                    messageText.className = 'font-label-sm text-[10px] uppercase tracking-wide text-green-600';
+                } else if (val === '') {
+                    messageContainer.classList.add('hidden');
+                } else {
+                    messageText.innerText = 'Invalid coupon code. Please try again.';
+                    messageText.className = 'font-label-sm text-[10px] uppercase tracking-wide text-error';
+                }
+            });
+        }
+    </script>
+</body></html>

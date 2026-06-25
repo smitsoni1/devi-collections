@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe Ethnic | Personal Profile &amp; Security</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "outline": "#747878",
+                        "primary": "#5d5f5f",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary-fixed": "#1a1c1c",
+                        "inverse-surface": "#313030",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5d5f5f",
+                        "on-secondary-container": "#626566",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "surface-bright": "#fcf8f8",
+                        "primary-container": "#ffffff",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#ddd9d9",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#1c1b1b",
+                        "inverse-on-surface": "#f4f0ef",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-container-high": "#ebe7e7",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-background": "#1c1b1b",
+                        "tertiary": "#5d5f5f",
+                        "outline-variant": "#c4c7c8",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary-container": "#ffffff",
+                        "background": "#fcf8f8",
+                        "on-secondary-fixed-variant": "#454748",
+                        "on-primary-container": "#747676",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface-variant": "#444748",
+                        "inverse-primary": "#c6c6c7",
+                        "secondary": "#5c5f60",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fcf8f8",
+                        "secondary-fixed": "#e1e3e4",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "secondary-container": "#e1e3e4",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed": "#191c1d",
+                        "on-tertiary-container": "#747676",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-desktop": "64px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xxl": "80px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "base": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "mono-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "mono-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display-md": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #fcf8f8; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .strength-bar-active { transition: width 0.3s ease-in-out, background-color 0.3s; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center w-full px-margin-desktop py-md sticky top-0 z-50">
+<div class="font-display-md text-display-md text-on-surface tracking-tighter uppercase">LUXE ETHNIC</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Boutique</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Sustenance</a>
+</nav>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">shopping_bag</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">favorite</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface font-bold">person</span>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] h-screen bg-surface-container-low border-r border-outline-variant hidden md:flex flex-col py-xl sticky top-[80px]">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional, high-fashion studio portrait of a woman in minimalist clothing. The background is a clean, neutral gray, emphasizing a high-end corporate elegance. The lighting is soft and directional, creating a sophisticated and refined atmosphere consistent with a luxury ethnic wear brand profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8FgjsplG0okhbvp_bNutfl-C83dt2HimJrFUuvY23V3wBlvlePup6RPA0eV913kHpycevvUqeWsgl9CkzJb33HIAEqGRl8kMSeloZ21uDYuo0n6TLRVZttL7nmqt9jNu0Ju8mE6LBLAFufvfKoQ69bRSeS6_2qqOa3CeMCURjx2eVCs_ySQ_mKWHKgFYEzJr9pwLq2ts7vm9QciHwt_GkAHfZRY11OFB42e-IuPVwVoW3OEnGqR-ZQTA0NRqrObqACxrXdeJ_OpbG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Member Account</h3>
+<p class="font-label-sm text-label-sm text-primary tracking-widest uppercase">Elite Status</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow">
+<ul class="flex flex-col">
+<li class="group">
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+</li>
+<li class="group">
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">shopping_basket</span>
+<span class="font-label-md text-label-md">Order History</span>
+</a>
+</li>
+<li class="group">
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-md text-label-md">Saved Addresses</span>
+</a>
+</li>
+<li class="group">
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">straighten</span>
+<span class="font-label-md text-label-md">Measurement Profile</span>
+</a>
+</li>
+<li class="group">
+<a class="flex items-center gap-md px-lg py-md border-l-4 border-primary bg-surface-container-high text-on-surface font-semibold scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="px-lg py-md mt-auto border-t border-outline-variant pt-lg">
+<a class="flex items-center gap-md py-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="font-label-sm text-label-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-md py-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+<span class="font-label-sm text-label-sm">Contact Concierge</span>
+</a>
+<button class="mt-lg w-full py-md border border-outline text-label-md font-bold tracking-widest hover:bg-on-surface hover:text-surface transition-all duration-300">
+                    LOGOUT
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-xl">
+<div class="max-w-4xl mx-auto space-y-xl">
+<!-- Section Header -->
+<div class="border-b border-outline-variant pb-md mb-lg">
+<h1 class="font-display-md text-display-md text-on-surface mb-xs">Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your personal information, security preferences, and active sessions.</p>
+</div>
+<!-- Account Overview Section -->
+<section class="space-y-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Account Overview</h2>
+</div>
+<div class="grid grid-cols-1 gap-0 bg-surface-container-lowest border border-outline-variant">
+<!-- Responsive Input Row: Name -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between p-lg border-b border-outline-variant group hover:bg-surface-container-low transition-colors">
+<div class="mb-md md:mb-0">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">Full Name</span>
+<div class="font-body-lg text-body-lg text-on-surface">Elena S. Varma</div>
+</div>
+<button class="font-label-md text-label-md border-b border-primary text-primary hover:text-on-surface hover:border-on-surface transition-all">Edit</button>
+</div>
+<!-- Responsive Input Row: Email -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between p-lg border-b border-outline-variant group hover:bg-surface-container-low transition-colors">
+<div class="mb-md md:mb-0">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">Email Address</span>
+<div class="font-body-lg text-body-lg text-on-surface">elena.varma@luxe-ethnic.com</div>
+</div>
+<button class="font-label-md text-label-md border-b border-primary text-primary hover:text-on-surface hover:border-on-surface transition-all">Edit</button>
+</div>
+<!-- Responsive Input Row: Mobile -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between p-lg group hover:bg-surface-container-low transition-colors">
+<div class="mb-md md:mb-0">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">Mobile Number</span>
+<div class="font-body-lg text-body-lg text-on-surface">+91 98765 43210</div>
+</div>
+<button class="font-label-md text-label-md border-b border-primary text-primary hover:text-on-surface hover:border-on-surface transition-all">Edit</button>
+</div>
+</div>
+</section>
+<!-- Login & Security Section -->
+<section class="space-y-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Login &amp; Security</h2>
+<div class="bg-surface-container-lowest border border-outline-variant p-lg md:p-xl">
+<div class="max-w-md space-y-lg">
+<div class="space-y-sm">
+<label class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">Current Password</label>
+<input class="w-full border border-outline-variant p-md focus:border-primary focus:ring-0 outline-none transition-colors" readonly="" type="password" value="••••••••••••"/>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-end">
+<label class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">New Password</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">Strength: Strong</span>
+</div>
+<input class="w-full border border-outline-variant p-md focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="Enter new password" type="password"/>
+<!-- Strength Meter -->
+<div class="w-full h-[2px] bg-surface-container-high flex gap-xs">
+<div class="h-full w-1/4 bg-on-surface transition-all"></div>
+<div class="h-full w-1/4 bg-on-surface transition-all"></div>
+<div class="h-full w-1/4 bg-on-surface transition-all"></div>
+<div class="h-full w-1/4 bg-surface-container-high transition-all"></div>
+</div>
+</div>
+<button class="bg-primary text-surface px-xl py-md font-label-md text-label-md tracking-widest hover:bg-on-surface transition-all duration-300">
+                                UPDATE PASSWORD
+                            </button>
+</div>
+</div>
+</section>
+<!-- Session Manager Card -->
+<section class="space-y-lg pb-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Session Manager</h2>
+<a class="font-label-sm text-label-sm text-error uppercase tracking-widest hover:underline transition-all" href="#">Log out from all sessions</a>
+</div>
+<div class="space-y-md">
+<!-- Active Device 1 -->
+<div class="flex items-center gap-lg p-lg bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">laptop_mac</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md text-on-surface">MacBook Pro 16"</span>
+<span class="bg-surface-container text-primary font-mono-sm text-mono-sm px-sm py-xs uppercase">Current Session</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Mumbai, India • Chrome v121.0.0</p>
+</div>
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<!-- Active Device 2 -->
+<div class="flex items-center gap-lg p-lg bg-surface-container-lowest border border-outline-variant group">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container text-on-surface-variant group-hover:bg-primary group-hover:text-surface transition-colors">
+<span class="material-symbols-outlined text-[32px]">phone_iphone</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md text-on-surface">iPhone 15 Pro</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">New Delhi, India • iOS App v4.2.1 • 2 hours ago</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-error transition-colors">logout</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant flex flex-col items-center py-xxl px-margin-desktop w-full gap-gutter">
+<div class="font-headline-lg text-headline-lg text-on-surface tracking-widest uppercase">LUXE ETHNIC WEAR</div>
+<div class="flex flex-wrap justify-center gap-xl">
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Sustainability Report</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Craftsmanship</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-lg uppercase opacity-60">
+            © 2024 LUXE ETHNIC WEAR. ALL RIGHTS RESERVED.
+        </p>
+</footer>
+<!-- Mobile Navigation (Visible on mobile only) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant flex justify-around py-md z-50">
+<span class="material-symbols-outlined text-on-surface-variant">home</span>
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+<span class="material-symbols-outlined text-on-surface font-bold">person</span>
+</div>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'transform 0.2s ease-out';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simulating the logout interaction
+        const logoutBtn = document.querySelector('button.bg-primary');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('mousedown', () => {
+                logoutBtn.classList.add('opacity-80', 'scale-95');
+            });
+            logoutBtn.addEventListener('mouseup', () => {
+                logoutBtn.classList.remove('scale-95');
+            });
+        }
+    </script>
+</body></html>

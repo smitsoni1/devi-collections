@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Product | DEVI Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "secondary": "#5c5f60",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-dim": "#ddd9d9",
+                    "tertiary-container": "#ffffff",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "surface-tint": "#5d5f5f",
+                    "surface-bright": "#fcf8f8",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-low": "#f6f3f2",
+                    "inverse-primary": "#c6c6c7",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#626566",
+                    "on-primary-fixed-variant": "#454747",
+                    "background": "#fcf8f8",
+                    "on-primary-fixed": "#1a1c1c",
+                    "on-primary-container": "#747676",
+                    "surface-container-high": "#ebe7e7",
+                    "on-background": "#1c1b1b",
+                    "secondary-fixed-dim": "#c5c7c8",
+                    "secondary-container": "#e1e3e4",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-tertiary-container": "#747676",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1c1b1b",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary-container": "#ffffff",
+                    "on-secondary-fixed": "#191c1d",
+                    "secondary-fixed": "#e1e3e4",
+                    "on-secondary-fixed-variant": "#454748",
+                    "surface-container": "#f1edec",
+                    "on-primary": "#ffffff",
+                    "surface": "#fcf8f8",
+                    "outline-variant": "#c4c7c8",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#747878",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary": "#5d5f5f",
+                    "tertiary": "#5d5f5f",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "48px",
+                    "xxl": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-md": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fcf8f8; }
+        input, select, textarea { 
+            border-radius: 0px !important; 
+            border: 1px solid #e2e2e2 !important;
+            transition: border-color 0.2s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none !important;
+            border-color: #1c1b1b !important;
+            ring: 0 !important;
+        }
+        .custom-checkbox:checked {
+            background-color: #1c1b1b !important;
+            border-color: #1c1b1b !important;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg z-40 hidden md:flex">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Admin Console</h1>
+<p class="font-label-sm text-label-sm text-secondary">Enterprise Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-lg py-md border-l-[3px] border-primary bg-secondary-container text-on-secondary-container font-semibold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-md" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                Products
+            </a>
+<a class="flex items-center px-lg py-md text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-md">local_shipping</span>
+                Orders
+            </a>
+</nav>
+<div class="px-lg mt-auto pt-lg border-t border-outline-variant flex items-center gap-md">
+<div class="w-10 h-10 bg-outline-variant"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Admin Profile</p>
+<p class="font-label-sm text-label-sm text-secondary">Super Admin</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[280px] min-h-screen p-margin-mobile md:p-margin-desktop">
+<header class="mb-xl flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-xs font-label-sm text-label-sm text-secondary mb-sm">
+<span>Products</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Add New Product</span>
+</nav>
+<h2 class="font-display-md text-display-md font-bold tracking-tight text-on-background">Create Collection Item</h2>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-sm border border-outline font-label-md text-label-md hover:bg-surface-container-high transition-all">Discard</button>
+<button class="px-xl py-sm bg-[#1A365D] text-white font-label-md text-label-md hover:bg-black transition-all">Publish Product</button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Details -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Basic Info Card -->
+<section class="bg-white border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">General Information</h3>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Product Title</label>
+<input class="p-md font-body-md text-body-md" placeholder="e.g. Hand-Woven Silk Kanjeevaram Saree" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Description</label>
+<textarea class="p-md font-body-md text-body-md" placeholder="Describe the craftsmanship, fabric details, and heritage of this piece..." rows="6"></textarea>
+</div>
+</div>
+</section>
+<!-- Variants & Inventory Card -->
+<section class="bg-white border border-outline-variant p-lg">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md">Variants &amp; Stock</h3>
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary hover:underline" onclick="addVariantRow()">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            Add Color Variant
+                        </button>
+</div>
+<div class="space-y-lg" id="variant-container">
+<!-- Variant Row Template -->
+<div class="variant-item border border-outline-variant p-md">
+<div class="grid grid-cols-12 gap-md mb-md">
+<div class="col-span-4 flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-secondary">Color Name</label>
+<input class="p-sm text-body-md" placeholder="Midnight Blue" type="text"/>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-secondary">HEX Code</label>
+<div class="flex gap-xs">
+<div class="w-10 h-10 border border-outline-variant" style="background-color: #1A365D;"></div>
+<input class="p-sm text-body-md w-full" type="text" value="#1A365D"/>
+</div>
+</div>
+<div class="col-span-6 flex items-end justify-end">
+<button class="text-error font-label-sm text-label-sm flex items-center gap-xs p-sm hover:bg-error-container">
+<span class="material-symbols-outlined text-[16px]">delete</span> Remove
+                                    </button>
+</div>
+</div>
+<div class="bg-surface-container-low p-md">
+<p class="font-label-sm text-label-sm uppercase text-secondary mb-md">Size Inventory</p>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-md" id="size-inventory-grid">
+<!-- Populated by selection -->
+<div class="flex flex-col gap-xs opacity-40">
+<label class="font-mono-sm text-mono-sm">XS</label>
+<input class="p-xs text-center text-body-md bg-transparent" disabled="" placeholder="-" type="number"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-mono-sm text-mono-sm">S</label>
+<input class="p-xs text-center text-body-md bg-white" type="number" value="12"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-mono-sm text-mono-sm">M</label>
+<input class="p-xs text-center text-body-md bg-white" type="number" value="8"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-mono-sm text-mono-sm">L</label>
+<input class="p-xs text-center text-body-md bg-white" type="number" value="15"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Metadata -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Media Section -->
+<section class="bg-white border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">Product Media</h3>
+<div class="aspect-square border-2 border-dashed border-outline-variant flex flex-col items-center justify-center p-xl hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-display-md text-outline-variant group-hover:text-primary mb-md">cloud_upload</span>
+<p class="font-label-md text-label-md text-on-surface">Click to upload imagery</p>
+<p class="font-label-sm text-label-sm text-secondary mt-xs">Min 1200x1600px suggested</p>
+</div>
+<div class="grid grid-cols-4 gap-sm mt-md">
+<div class="aspect-square bg-surface-container-high border border-outline-variant"></div>
+<div class="aspect-square bg-surface-container-high border border-outline-variant"></div>
+<div class="aspect-square bg-surface-container-high border border-outline-variant"></div>
+<div class="aspect-square border border-dashed border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">add</span>
+</div>
+</div>
+</section>
+<!-- Categorization -->
+<section class="bg-white border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">Classification</h3>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Collection Category</label>
+<select class="p-md font-body-md text-body-md bg-white appearance-none">
+<option>Select Category</option>
+<option>Sarees</option>
+<option>Kurtis</option>
+<option>Lehengas</option>
+<option>Gowns</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Available Sizes</label>
+<div class="grid grid-cols-3 gap-sm">
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">XS</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input checked="" class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">S</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input checked="" class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">M</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input checked="" class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">L</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">XL</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md">XXL</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="bg-white border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">Pricing</h3>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Base Price (INR)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 font-body-md text-secondary">₹</span>
+<input class="pl-xl p-md font-body-md text-body-md w-full" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Compare at Price</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 font-body-md text-secondary">₹</span>
+<input class="pl-xl p-md font-body-md text-body-md w-full" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="flex items-center gap-sm pt-sm">
+<input class="custom-checkbox w-4 h-4 border-outline-variant text-on-background focus:ring-0" type="checkbox"/>
+<label class="font-label-md text-label-md">Charge tax on this product</label>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-xxl pt-xl border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-lg">
+<h2 class="font-display-md text-display-md font-bold text-on-background tracking-tighter">DEVI</h2>
+<div class="flex gap-xl">
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Shipping Policy</a>
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Contact</a>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">© 2024 Devi Collections. All rights reserved.</p>
+</footer>
+</main>
+<script>
+        function addVariantRow() {
+            const container = document.getElementById('variant-container');
+            const newVariant = document.createElement('div');
+            newVariant.className = 'variant-item border border-outline-variant p-md animate-fadeIn';
+            newVariant.innerHTML = `
+                <div class="grid grid-cols-12 gap-md mb-md">
+                    <div class="col-span-4 flex flex-col gap-xs">
+                        <label class="font-label-sm text-label-sm text-secondary">Color Name</label>
+                        <input type="text" placeholder="Emerald Green" class="p-sm text-body-md">
+                    </div>
+                    <div class="col-span-2 flex flex-col gap-xs">
+                        <label class="font-label-sm text-label-sm text-secondary">HEX Code</label>
+                        <div class="flex gap-xs">
+                            <div class="w-10 h-10 border border-outline-variant bg-surface-container-highest"></div>
+                            <input type="text" placeholder="#000000" class="p-sm text-body-md w-full">
+                        </div>
+                    </div>
+                    <div class="col-span-6 flex items-end justify-end">
+                        <button onclick="this.closest('.variant-item').remove()" class="text-error font-label-sm text-label-sm flex items-center gap-xs p-sm hover:bg-error-container">
+                            <span class="material-symbols-outlined text-[16px]">delete</span> Remove
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-surface-container-low p-md">
+                    <p class="font-label-sm text-label-sm uppercase text-secondary mb-md">Size Inventory</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-md">
+                        <div class="flex flex-col gap-xs opacity-40"><label class="font-mono-sm text-mono-sm">XS</label><input type="number" disabled class="p-xs text-center text-body-md bg-transparent"></div>
+                        <div class="flex flex-col gap-xs"><label class="font-mono-sm text-mono-sm">S</label><input type="number" value="0" class="p-xs text-center text-body-md bg-white"></div>
+                        <div class="flex flex-col gap-xs"><label class="font-mono-sm text-mono-sm">M</label><input type="number" value="0" class="p-xs text-center text-body-md bg-white"></div>
+                        <div class="flex flex-col gap-xs"><label class="font-mono-sm text-mono-sm">L</label><input type="number" value="0" class="p-xs text-center text-body-md bg-white"></div>
+                        <div class="flex flex-col gap-xs opacity-40"><label class="font-mono-sm text-mono-sm">XL</label><input type="number" disabled class="p-xs text-center text-body-md bg-transparent"></div>
+                        <div class="flex flex-col gap-xs opacity-40"><label class="font-mono-sm text-mono-sm">XXL</label><input type="number" disabled class="p-xs text-center text-body-md bg-transparent"></div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(newVariant);
+        }
+
+        // Micro-interaction for hex preview
+        document.addEventListener('input', (e) => {
+            if (e.target.classList.contains('w-full') && e.target.value.startsWith('#')) {
+                const preview = e.target.previousElementSibling;
+                if (preview) {
+                    preview.style.backgroundColor = e.target.value;
+                }
+            }
+        });
+    </script>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</body></html>

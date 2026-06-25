@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Console - Manage Coupons | DEVI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c7c8",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "secondary-fixed-dim": "#c5c7c8",
+                    "inverse-surface": "#313030",
+                    "secondary-container": "#e1e3e4",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "surface-container": "#f1edec",
+                    "primary-container": "#ffffff",
+                    "on-background": "#1c1b1b",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-bright": "#fcf8f8",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#626566",
+                    "on-primary-fixed-variant": "#454747",
+                    "surface-container-low": "#f6f3f2",
+                    "outline": "#747878",
+                    "on-tertiary-container": "#747676",
+                    "tertiary-container": "#ffffff",
+                    "surface": "#fcf8f8",
+                    "surface-container-high": "#ebe7e7",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-surface": "#1c1b1b",
+                    "tertiary": "#5d5f5f",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#c6c6c7",
+                    "background": "#fcf8f8",
+                    "surface-dim": "#ddd9d9",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#747676",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#5d5f5f",
+                    "primary": "#5d5f5f",
+                    "on-secondary-fixed-variant": "#454748",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#1a1c1c",
+                    "secondary": "#5c5f60",
+                    "on-secondary-fixed": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface-variant": "#444748",
+                    "secondary-fixed": "#e1e3e4",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "inverse-on-surface": "#f4f0ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "sm": "8px",
+                    "xxl": "80px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "xl": "48px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "display-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "mono-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-md": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "mono-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8f8;
+            color: #1c1b1b;
+            margin: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            border-left: 3px solid #5d5f5f;
+            background-color: #e1e3e4;
+            color: #626566;
+            font-weight: 600;
+        }
+        /* Custom scrollbar for high-end look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1edec;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c7c8;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #747878;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (Admin Console Shell) -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Admin Console</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active State: Products/Coupons would logically fall under Products or a similar top-level category -->
+<a class="sidebar-active flex items-center px-lg py-md transition-all" href="#">
+<span class="material-symbols-outlined mr-md">inventory_2</span>
+<span class="font-label-md text-label-md">Products</span>
+</a>
+<a class="flex items-center px-lg py-md text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-md">local_shipping</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<div class="pt-xl px-lg pb-sm uppercase font-label-sm tracking-widest text-outline text-[10px]">Marketing</div>
+<a class="flex items-center px-lg py-md text-primary font-semibold bg-surface-container-high border-l-[3px] border-primary transition-all" href="#">
+<span class="material-symbols-outlined mr-md">confirmation_number</span>
+<span class="font-label-md text-label-md">Manage Coupons</span>
+</a>
+<a class="flex items-center px-lg py-md text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-md">campaign</span>
+<span class="font-label-md text-label-md">Campaigns</span>
+</a>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant flex items-center space-x-md">
+<div class="w-10 h-10 bg-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-surface">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Admin Profile</p>
+<p class="font-label-sm text-label-sm text-outline">Super Admin</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] flex-1 flex flex-col">
+<!-- Header / Top Bar -->
+<header class="h-xxl flex items-center justify-between px-margin-desktop bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Manage Coupons</h2>
+<nav class="flex items-center space-x-2 text-outline font-label-sm">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span>/</span>
+<a class="hover:text-primary" href="#">Marketing</a>
+<span>/</span>
+<span class="text-on-surface font-medium">Coupons</span>
+</nav>
+</div>
+<button class="bg-[#1A365D] text-white px-lg py-md font-label-md text-label-md flex items-center hover:bg-black transition-colors duration-200">
+<span class="material-symbols-outlined mr-sm text-[20px]">add</span>
+                CREATE NEW COUPON
+            </button>
+</header>
+<!-- Page Content -->
+<div class="p-margin-desktop space-y-lg">
+<!-- Filters & Search -->
+<section class="bg-white border border-outline-variant p-lg shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="flex flex-col space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-tight">Search Code</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-xl pr-md py-md border border-outline-variant focus:ring-0 focus:border-primary font-body-md text-body-md" placeholder="E.g. FESTIVE20" type="text"/>
+</div>
+</div>
+<div class="flex flex-col space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-tight">Coupon Type</label>
+<select class="w-full px-md py-md border border-outline-variant focus:ring-0 focus:border-primary font-body-md text-body-md appearance-none bg-white">
+<option>All Types</option>
+<option>Percentage</option>
+<option>Flat Discount</option>
+<option>Free Shipping</option>
+</select>
+</div>
+<div class="flex flex-col space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-tight">Status</label>
+<select class="w-full px-md py-md border border-outline-variant focus:ring-0 focus:border-primary font-body-md text-body-md appearance-none bg-white">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Scheduled</option>
+<option>Expired</option>
+<option>Disabled</option>
+</select>
+</div>
+<div class="flex flex-end items-end">
+<button class="w-full border border-[#1A365D] text-[#1A365D] px-lg py-[11px] font-label-md text-label-md hover:bg-secondary-container transition-all">
+                            RESET FILTERS
+                        </button>
+</div>
+</div>
+</section>
+<!-- Data Table -->
+<section class="bg-white border border-outline-variant overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Code</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Type</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Value</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Usage</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Status</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight">Expiry</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface uppercase tracking-tight text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-lg font-body-md text-body-md font-semibold text-on-background">DIWALI2024</td>
+<td class="px-lg py-lg font-body-md text-body-md text-secondary">Percentage</td>
+<td class="px-lg py-lg font-body-md text-body-md text-on-background">25% OFF</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">1,240 / 5,000</td>
+<td class="px-lg py-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#111111] px-sm py-1 bg-[#F1EDEC]">Active</span>
+</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">Nov 15, 2024</td>
+<td class="px-lg py-lg text-right">
+<button class="text-outline hover:text-on-background p-sm"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-outline hover:text-error p-sm"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-lg font-body-md text-body-md font-semibold text-on-background">FIRSTORDER</td>
+<td class="px-lg py-lg font-body-md text-body-md text-secondary">Flat</td>
+<td class="px-lg py-lg font-body-md text-body-md text-on-background">₹500 OFF</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">8,450 / ∞</td>
+<td class="px-lg py-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#111111] px-sm py-1 bg-[#F1EDEC]">Active</span>
+</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">—</td>
+<td class="px-lg py-lg text-right">
+<button class="text-outline hover:text-on-background p-sm"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-outline hover:text-error p-sm"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-lg font-body-md text-body-md font-semibold text-on-background">FREESHIP</td>
+<td class="px-lg py-lg font-body-md text-body-md text-secondary">Shipping</td>
+<td class="px-lg py-lg font-body-md text-body-md text-on-background">FREE</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">320 / 1,000</td>
+<td class="px-lg py-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-error px-sm py-1 bg-error-container">Disabled</span>
+</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">Dec 31, 2024</td>
+<td class="px-lg py-lg text-right">
+<button class="text-outline hover:text-on-background p-sm"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-outline hover:text-error p-sm"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-lg font-body-md text-body-md font-semibold text-on-background">WEDDING20</td>
+<td class="px-lg py-lg font-body-md text-body-md text-secondary">Percentage</td>
+<td class="px-lg py-lg font-body-md text-body-md text-on-background">20% OFF</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">5,000 / 5,000</td>
+<td class="px-lg py-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline px-sm py-1 border border-outline-variant">Expired</span>
+</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline text-error">Oct 20, 2024</td>
+<td class="px-lg py-lg text-right">
+<button class="text-outline hover:text-on-background p-sm"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-outline hover:text-error p-sm"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-lg font-body-md text-body-md font-semibold text-on-background">KASHMIR10</td>
+<td class="px-lg py-lg font-body-md text-body-md text-secondary">Percentage</td>
+<td class="px-lg py-lg font-body-md text-body-md text-on-background">10% OFF</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">0 / 2,000</td>
+<td class="px-lg py-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-tertiary-fixed-dim px-sm py-1 bg-surface-container-high">Scheduled</span>
+</td>
+<td class="px-lg py-lg font-body-md text-body-md text-outline">Jan 01, 2025</td>
+<td class="px-lg py-lg text-right">
+<button class="text-outline hover:text-on-background p-sm"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-outline hover:text-error p-sm"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-lg py-md flex items-center justify-between border-t border-outline-variant bg-surface-container-lowest">
+<p class="font-label-sm text-label-sm text-outline">Showing 1-5 of 12 coupons</p>
+<div class="flex space-x-base">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant text-outline hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-primary bg-primary text-white font-label-sm text-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant text-on-surface font-label-sm text-label-sm hover:border-primary transition-all">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant text-on-surface font-label-sm text-label-sm hover:border-primary transition-all">3</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant text-outline hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Usage Insights (Asymmetric Layout Extra) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-1 bg-white border border-outline-variant p-lg shadow-sm">
+<h3 class="font-label-md text-label-md text-outline uppercase mb-md">Coupon Usage Overview</h3>
+<div class="space-y-md">
+<div class="flex justify-between items-end border-b border-outline-variant pb-sm">
+<span class="font-body-md text-body-md text-on-surface">Total Redeemed</span>
+<span class="font-headline-md text-headline-md font-bold">₹142.5k</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-sm">
+<span class="font-body-md text-body-md text-on-surface">Avg. Discount</span>
+<span class="font-headline-md text-headline-md font-bold">18.4%</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-sm">
+<span class="font-body-md text-body-md text-on-surface">Active Codes</span>
+<span class="font-headline-md text-headline-md font-bold">8</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 bg-[#1A365D] p-lg text-white flex items-center justify-between overflow-hidden relative">
+<div class="z-10">
+<h3 class="font-display-md text-display-md font-bold mb-xs tracking-tighter">Automate your Marketing</h3>
+<p class="font-body-md text-body-md text-tertiary-fixed opacity-80 max-w-md">Set up rule-based coupons that automatically trigger based on customer spend or anniversary milestones.</p>
+<button class="mt-lg border-2 border-white px-lg py-md font-label-md text-label-md hover:bg-white hover:text-[#1A365D] transition-all">
+                            CONFIGURE RULES
+                        </button>
+</div>
+<!-- Decorative Graphic Placeholder -->
+<div class="absolute right-0 top-0 h-full w-1/3 bg-white/5 skew-x-[-20deg] translate-x-12"></div>
+<span class="material-symbols-outlined text-[160px] opacity-10 absolute right-4 bottom-[-20px] pointer-events-none">auto_awesome</span>
+</div>
+</div>
+</div>
+<!-- Admin Footer -->
+<footer class="mt-auto w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between border-t border-outline-variant bg-surface-container-highest">
+<div>
+<p class="font-display-md text-display-md font-bold text-on-background mb-sm">DEVI</p>
+<p class="font-label-sm text-label-sm text-secondary">© 2024 Devi Collections. All rights reserved.</p>
+</div>
+<div class="mt-lg md:mt-0 flex gap-xl">
+<div class="space-y-sm">
+<p class="font-label-md text-label-md text-on-surface font-bold uppercase">Admin Quick Links</p>
+<ul class="space-y-xs">
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Support Center</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Api Docs</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Compliance</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<p class="font-label-md text-label-md text-on-surface font-bold uppercase">Product</p>
+<ul class="space-y-xs">
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">About Us</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Sustainability</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-on-background transition-all" href="#">Shipping Policy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-[0.98]'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-[0.98]'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-[0.98]'));
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-1', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-1', 'ring-primary');
+        });
+    </script>
+</body></html>
