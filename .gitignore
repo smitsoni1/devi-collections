@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.env
+stitch_new_version/
